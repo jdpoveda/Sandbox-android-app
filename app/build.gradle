@@ -31,7 +31,8 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    // ****ViewBinding s1: Add viewBinding = true
+    // ****ViewBindingFragment s1: Add viewBinding = true
+    // ****ViewBindingRecyclerView s1: Add viewBinding = true
     buildFeatures {
         viewBinding = true
     }
@@ -72,6 +73,6 @@ dependencies {
     //To read the state of the Fragment from ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-rc01'
 
-    //To be able to use viewModels() extension function
-    //implementation "androidx.fragment:fragment-ktx:1.2.5"
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
 }

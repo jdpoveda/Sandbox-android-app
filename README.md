@@ -5,11 +5,16 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****MVVM - Create a Model, Repository, View and ViewModel and connect them. (Jetpack LiveData, ViewModel)
 
-// ****ViewBinding - Use view binding to replace findViewById (Jetpack ViewBinding)
+// ****Navigation - Implement Navigation component (Jetpack Navigation)
+
+// ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
+
+// ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
+
+// ****RecyclerView - Implement a RecyclerView using androidx, itemClickListener and ViewBinding.
 
 // ****Retrofit - Implement retrofit to call endpoints and get the data
 
-// ****Navigation - Implement Navigation component (Jetpack Navigation)
 
 ----- Pending ------
 
