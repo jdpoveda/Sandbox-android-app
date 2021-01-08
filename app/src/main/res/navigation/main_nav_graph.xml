@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ****Navigation s2: Create the nav_graph.xml file: right click on /res folder -> New Android Resource File
+    fill the name and select Navigation resource type -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+    <!-- ****Navigation s4: Add the start destination fragment in the Design view -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.juanpoveda.recipes.ui.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+</navigation>
