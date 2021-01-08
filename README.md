@@ -4,8 +4,11 @@ Sandbox Android app with step by step comments to implement the most common and 
 Search for these comments in the app to check the steps needed to implement that feature:
 
 // ****MVVM - Create a Model, Repository, View and ViewModel and connect them. (Jetpack LiveData, ViewModel)
+
 // ****ViewBinding - Use view binding to replace findViewById (Jetpack ViewBinding)
+
 // ****Retrofit - Implement retrofit to call endpoints and get the data
+
 // ****Navigation - Implement Navigation component (Jetpack Navigation)
 
 ----- Pending ------
