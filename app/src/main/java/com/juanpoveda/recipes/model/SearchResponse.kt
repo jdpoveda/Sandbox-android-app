@@ -2,6 +2,7 @@ package com.juanpoveda.recipes.model
 
 import com.google.gson.annotations.SerializedName
 
+// ****Retrofit s3: Create the Data Classes for the endpoint response objects
 data class SearchResponse (
     @SerializedName("count") val count: Int,
     @SerializedName("from") val from: Int,

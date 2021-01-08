@@ -8,14 +8,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// ****MVVM s1: Create the Repository class. It must be the unique source of data for the app. The endpoints are called
+// here and if no network connection is available, the methods should return the cached data or the local database data.
 class RecipesRepository() {
 
     companion object {
-        val request: Webservice = ServiceBuilder.buildService(Webservice::class.java) //****Retrofit s5: call buildService passing the corresponding interface
+        val request: Webservice = ServiceBuilder.buildService(Webservice::class.java) // ****Retrofit s6: call buildService passing the corresponding interface
 
         fun getRecipes(queryParam: String) : LiveData<SearchResponse> {
             val data = MutableLiveData<SearchResponse>()
-            //****Retrofit s6: call the endpoint and handle success and failure scenarios
+            // ****Retrofit s7: call the endpoint and handle success and failure scenarios
             val call = request.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
 
             call.enqueue(object: Callback<SearchResponse> {

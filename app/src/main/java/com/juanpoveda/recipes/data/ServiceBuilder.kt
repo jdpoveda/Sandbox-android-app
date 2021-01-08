@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//****Retrofit s4: Add the service builder with the baseUrl and the GSON converter
+// ****Retrofit s5: Add the service builder with the baseUrl and the GSON converter
 object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 
