@@ -15,34 +15,34 @@ Search for these comments in the app to check the steps needed to implement that
 
 - JetPack's Architecture components:
 
-DataBinding
-LifeCycles
-Paging
-Room
-WorkManager
+  DataBinding
+  LifeCycles
+  Paging
+  Room
+  WorkManager
 
 - JetPack's UI:
 
-Animations & transitions
-Auto, TV & Wear
-Emoji
-Fragment (Check how to pass data between fragments, shared ViewModels, etc)
-Layout
-Palette
+  Animations & transitions
+  Auto, TV & Wear
+  Emoji
+  Fragment (Check how to pass data between fragments, shared ViewModels, etc)
+  Layout
+  Palette
 
 - JetPack's Behavior:
 
-DownloadManager
-Media & Playback
-Permissions
-Notifications
-Sharing
-Slices
+  DownloadManager
+  Media & Playback
+  Permissions
+  Notifications
+  Sharing
+  Slices
 
 - Foundation:
 
-AppCompat
-Android KTX
-Test
+  AppCompat
+  Android KTX
+  Test
 
 
