@@ -3,6 +3,7 @@ package com.juanpoveda.recipes.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.databinding.HitListItemBinding
 import com.juanpoveda.recipes.model.Hit
 
@@ -36,6 +37,8 @@ class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener)
             with(hitList[position]) {
                 // ****ViewBindingRecyclerView s4: To access the views of the layout, just use the binding val set in HitsViewHolder:
                 binding.hitTitleTextView.text = this.recipe.label
+                // ****Glide s2: Load the image url into the desired ImageView
+                Glide.with(binding.root).load(this.recipe.image).into(binding.hitImageView)
                 binding.root.setOnClickListener {
                     hitClickListener.onHitClick(this)
                 }

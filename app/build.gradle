@@ -33,6 +33,7 @@ android {
     }
     // ****ViewBindingFragment s1: Add viewBinding = true
     // ****ViewBindingRecyclerView s1: Add viewBinding = true
+    // ****ViewBindingActivity s1: Add viewBinding = true
     buildFeatures {
         viewBinding = true
     }
@@ -75,4 +76,12 @@ dependencies {
 
     //RecyclerView
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    //Glide
+    // ****Glide s1: Add dependencies
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // ****NavigationDrawer s1: Add dependency
+    implementation "com.google.android.material:material:1.2.1"
 }

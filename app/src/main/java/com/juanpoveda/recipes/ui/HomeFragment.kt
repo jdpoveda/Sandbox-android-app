@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
 import com.juanpoveda.recipes.databinding.HomeFragmentBinding
 import com.juanpoveda.recipes.model.Hit
@@ -64,6 +67,8 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
 
     override fun onHitClick(item: Hit) {
         println("******* Hit clicked! " + item)
+        Toast.makeText(activity, "Hit clicked!", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_homeFragment_to_hitDetailFragment) // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action
     }
 
 }

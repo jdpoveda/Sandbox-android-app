@@ -11,5 +11,49 @@
         android:id="@+id/homeFragment"
         android:name="com.juanpoveda.recipes.ui.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <!-- ****Navigation s6: Add the action between 2 fragments in the design view (this is the arrow between fragments) -->
+        <action
+            android:id="@+id/action_homeFragment_to_hitDetailFragment"
+            app:destination="@id/hitDetailFragment" />
+    </fragment>
+    <!-- ****Navigation s5: Add the other fragments needed in the flow with New destination button in design view -->
+   <fragment
+       android:id="@+id/hitDetailFragment"
+       android:name="com.juanpoveda.recipes.ui.HitDetailFragment"
+       android:label="hit_detail_fragment"
+       tools:layout="@layout/hit_detail_fragment" >
+       <!-- ****Navigation s8: Multiple actions can be configured for a fragment. In this case, we can go to ingredientsDetailFragment
+                or we can go to stepsFragment depending on the user action. -->
+       <!-- ****Navigation s9: The default behavior of back button can be modified in the action! Just set the popUpTo and popUpToInclusive fields for the
+                action in the design view following these rules:
+                -The popUpTo attribute of an action "pops up" the back stack to a given destination before navigating. (Destinations are removed from the back stack.)
+                -If the popUpToInclusive attribute is false or is not set, popUpTo removes destinations up to the specified destination, but leaves the specified destination in the back stack.
+                -If popUpToInclusive is set to true, the popUpTo attribute removes all destinations up to and including the given destination from the back stack.
+                -If popUpToInclusive is true and popUpTo is set to the app's starting location, the action removes all app destinations from the back stack. The Back button takes the user all the way out of the app.-->
+       <action
+           android:id="@+id/action_hitDetailFragment_to_ingredientDetailFragment"
+           app:destination="@id/ingredientDetailFragment"
+           app:popUpTo="@id/homeFragment" />
+       <action
+           android:id="@+id/action_hitDetailFragment_to_stepsFragment"
+           app:destination="@id/stepsFragment" />
+   </fragment>
+    <fragment
+        android:id="@+id/ingredientDetailFragment"
+        android:name="com.juanpoveda.recipes.ui.IngredientDetailFragment"
+        android:label="ingredient_detail_fragment"
+        tools:layout="@layout/ingredient_detail_fragment" />
+    <fragment
+        android:id="@+id/stepsFragment"
+        android:name="com.juanpoveda.recipes.ui.StepsFragment"
+        android:label="steps_fragment"
+        tools:layout="@layout/steps_fragment" />
+    <!-- ****NavigationDrawer s2: All the fragments that will be included in the drawer must be in the nav_graph.xml file
+            and have an id like @+id/aboutFragment in this case! (even if they are not connected to any other fragments)-->
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.juanpoveda.recipes.ui.AboutFragment"
+        android:label="about_fragment"
+        tools:layout="@layout/about_fragment" />
 </navigation>

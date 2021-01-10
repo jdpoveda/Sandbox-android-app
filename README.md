@@ -5,22 +5,29 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****MVVM - Create a Model, Repository, View and ViewModel and connect them. (Jetpack LiveData, ViewModel)
 
-// ****Navigation - Implement Navigation component (Jetpack Navigation)
-
 // ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
 
-// ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
+// ****ViewBindingActivity - Use view binding to replace findViewById for Activities (Jetpack ViewBinding)
+
+// ****Navigation - Implement Navigation component (Jetpack Navigation)
+
+// ****NavigationDrawer - Add a Navigation Drawer to the app using Jetpack's navigation features
 
 // ****RecyclerView - Implement a RecyclerView using androidx, itemClickListener and ViewBinding.
 
+// ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
+
 // ****Retrofit - Implement retrofit to call endpoints and get the data
+
+// ****Glide - Implement and use Glide to load images
+
+
 
 
 ----- Pending ------
 
 - JetPack's Architecture components:
 
-  * DataBinding
   * LifeCycles
   * Paging
   * Room
