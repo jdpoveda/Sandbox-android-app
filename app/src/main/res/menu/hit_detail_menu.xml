@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ****ShareWithOtherApps s4: Create a menu file to include the share button -->
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/share"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/share"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+</menu>

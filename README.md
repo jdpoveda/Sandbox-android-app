@@ -23,6 +23,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Glide - Implement and use Glide to load images
 
+// ****ShareWithOtherApps - Add toolbar share button and send an implicit intent to share content with other apps
+
 
 
 

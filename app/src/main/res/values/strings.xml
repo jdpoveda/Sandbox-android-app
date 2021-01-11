@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Recipes</string>
+    <string name="share_title">Sharing recipe: %s</string>
+    <string name="share">Share</string>
 </resources>
