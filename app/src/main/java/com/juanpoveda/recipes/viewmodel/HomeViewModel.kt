@@ -33,6 +33,7 @@ savedStateHandle: SavedStateHandle
     // update the recipe list based on the query.
     fun searchHits(query: String) {
         viewModelScope.launch {
+            // ****Retrofit s6: call the desired request
             val call = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, query)
             call.enqueue(object: Callback<SearchResponse> {
                 override fun onFailure(call: Call<SearchResponse>, t: Throwable) {

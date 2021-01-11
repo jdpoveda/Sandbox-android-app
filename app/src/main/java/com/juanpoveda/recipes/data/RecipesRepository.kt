@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.juanpoveda.recipes.BuildConfig
 import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.model.SearchResponse
-import com.juanpoveda.recipes.network.ServiceBuilder
+import com.juanpoveda.recipes.network.RecipesApi
 import com.juanpoveda.recipes.network.Webservice
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,13 +16,11 @@ import retrofit2.Response
 class RecipesRepository() {
 
     companion object {
-        val request: Webservice = ServiceBuilder.buildService(
-            Webservice::class.java) // ****Retrofit s6: call buildService passing the corresponding interface
 
         fun getRecipes(queryParam: String) : LiveData<List<Hit>?> {
             val data = MutableLiveData<List<Hit>?>()
-            // ****Retrofit s7: call the endpoint and handle success and failure scenarios
-            val call = request.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
+            // ****Retrofit s6: call the desired request
+            val call = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
 
             call.enqueue(object: Callback<SearchResponse> {
                 override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
