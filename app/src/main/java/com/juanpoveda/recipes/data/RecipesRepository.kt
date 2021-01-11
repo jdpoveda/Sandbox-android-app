@@ -3,20 +3,24 @@ package com.juanpoveda.recipes.data
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.juanpoveda.recipes.BuildConfig
+import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.model.SearchResponse
+import com.juanpoveda.recipes.network.ServiceBuilder
+import com.juanpoveda.recipes.network.Webservice
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-// ****MVVM s1: Create the Repository class. It must be the unique source of data for the app. The endpoints are called
+// ****Repository s1: Create the Repository class. It must be the unique source of data for the app. The endpoints are called
 // here and if no network connection is available, the methods should return the cached data or the local database data.
 class RecipesRepository() {
 
     companion object {
-        val request: Webservice = ServiceBuilder.buildService(Webservice::class.java) // ****Retrofit s6: call buildService passing the corresponding interface
+        val request: Webservice = ServiceBuilder.buildService(
+            Webservice::class.java) // ****Retrofit s6: call buildService passing the corresponding interface
 
-        fun getRecipes(queryParam: String) : LiveData<SearchResponse> {
-            val data = MutableLiveData<SearchResponse>()
+        fun getRecipes(queryParam: String) : LiveData<List<Hit>?> {
+            val data = MutableLiveData<List<Hit>?>()
             // ****Retrofit s7: call the endpoint and handle success and failure scenarios
             val call = request.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
 
@@ -26,7 +30,7 @@ class RecipesRepository() {
                 }
 
                 override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-                    data.value = response.body()
+                    data.value = response.body()?.hits
                 }
             })
 

@@ -1,10 +1,10 @@
-package com.juanpoveda.recipes.data
+package com.juanpoveda.recipes.network
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// ****Retrofit s5: Add the service builder with the baseUrl and the GSON converter
+// ****Retrofit s5: Add the service builder with the baseUrl and the GSON converter (option 1/2)
 object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 

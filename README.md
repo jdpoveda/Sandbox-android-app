@@ -3,7 +3,9 @@ Sandbox Android app with step by step comments to implement the most common and 
 
 Search for these comments in the app to check the steps needed to implement that feature:
 
-// ****MVVM - Create a Model, Repository, View and ViewModel and connect them. (Jetpack LiveData, ViewModel)
+// ****ViewModel - Create ViewModel and connect with View and repository. (Jetpack LiveData, ViewModel)
+
+// ****Repository - Create a Repository to manage all the data source in 1 place
 
 // ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
 

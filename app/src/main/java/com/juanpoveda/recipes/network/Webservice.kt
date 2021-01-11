@@ -1,4 +1,4 @@
-package com.juanpoveda.recipes.data
+package com.juanpoveda.recipes.network
 
 import com.juanpoveda.recipes.model.SearchResponse
 import retrofit2.Call

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
@@ -16,19 +17,19 @@ import com.juanpoveda.recipes.databinding.HomeFragmentBinding
 import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
 
-// ****MVVM s2: Generate this Fragment (View) and the corresponding ViewModel by right click
+// ****ViewModel s1: Generate this Fragment (View) and the corresponding ViewModel by right click
 // on the package -> New -> Fragment -> Fragment (With ViewModel).
 // This action will generate HomeViewModel class also.
-class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
+class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener, SearchView.OnQueryTextListener {
 
     companion object {
         fun newInstance() = HomeFragment()
     }
 
-    // ****MVVM s5: create a class val for the viewModel and initialize it by using: viewModel: HomeViewModel by viewModels()
+    // ****ViewModel s5: Create a class val for the viewModel and initialize it by using: viewModel: HomeViewModel by viewModels()
     private val viewModel: HomeViewModel by viewModels()
     // ****RecyclerView s4: Create a field for the adapter in the Activity/Fragment
-    private lateinit var hitListAdapter: HitListAdapter
+    private var hitListAdapter: HitListAdapter? = null
 
     // ****ViewBindingFragment s2: As we have viewBinding = true in the app/gradle file, the Binging classes
     // like HomeFragmentBindingare generated. Create a field in the Fragment this way:
@@ -43,20 +44,20 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        // ****ViewBindingFragment s4: We can call the views of the layout directly with binding.viewName
+        binding.recipeSearchView.setOnQueryTextListener(this)
 
-        // ****MVVM s6: Now, the viewModel can be used to observe the LiveData fields and manage the UI according to the changes in the data.
-        viewModel.recipeList.observe(viewLifecycleOwner) {
-            // ****ViewBindingFragment s4: We can call the views of the layout directly with binding.viewName
-            println("******* hits " + it)
-
+        // ****ViewModel s6: Now, the viewModel can be used to observe the LiveData fields
+        viewModel.hitList.observe(viewLifecycleOwner) {
             // ****RecyclerView s5: Instantiate the adapter, pass the clickListener implemented in the Fragment and the list of items.
-            this.hitListAdapter = HitListAdapter(it.hits, this)
-            binding.recipesRecyclerView.setHasFixedSize(true)
-            binding.recipesRecyclerView.layoutManager = LinearLayoutManager(activity)
-            binding.recipesRecyclerView.adapter = this.hitListAdapter
-            (binding.recipesRecyclerView.adapter as HitListAdapter).notifyDataSetChanged()
+            it?.let { it1 ->
+                this.hitListAdapter = HitListAdapter(it1, this)
+                binding.recipesRecyclerView.setHasFixedSize(true)
+                binding.recipesRecyclerView.layoutManager = LinearLayoutManager(activity)
+                binding.recipesRecyclerView.adapter = this.hitListAdapter
+                (binding.recipesRecyclerView.adapter as HitListAdapter?)?.notifyDataSetChanged()
+            }
         }
-
 
     }
 
@@ -66,7 +67,6 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
     }
 
     override fun onHitClick(item: Hit) {
-        println("******* Hit clicked! " + item)
         Toast.makeText(activity, "Hit clicked!", Toast.LENGTH_SHORT).show()
         // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action. If data must be passed between
         // fragments, check ****SafeArgs. The following line is commented because in this fragment we want to pass data to the next fragment.
@@ -77,6 +77,18 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
         // .navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item)). Note that the call will expect the argument that
         // were defined in the previous step.
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item))
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        // ****ViewModel s7: The View must inform the viewModel if the user entered new information, like this search. The ViewModel must have
+        // methods to manage this and update the MutableLiveData so the UI can get the updates in the Observer
+        viewModel.searchHits(query.orEmpty())
+        binding.root.requestFocus() // To avoid keeping the focus in the SearchView after submit
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 
 }
