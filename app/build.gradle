@@ -89,4 +89,7 @@ dependencies {
     // ****NavigationDrawer s1: Add dependency
     implementation "com.google.android.material:material:1.2.1"
 
+    // ****Timber s1: Add dependency
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
 }

@@ -13,6 +13,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****SafeArgs - Pass data between Fragments (part of Jetpack Navigation)
 
+// ****LifeCycle - Use the Jetpack's LifeCycle lib to observe changes in the lifecycle of an Activity/Fragment  (Jetpack LifeCycles)
+
 // ****NavigationDrawer - Add a Navigation Drawer to the app using Jetpack's navigation features
 
 // ****RecyclerView - Implement a RecyclerView using androidx, itemClickListener and ViewBinding.
@@ -25,6 +27,7 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****ShareWithOtherApps - Add toolbar share button and send an implicit intent to share content with other apps
 
+// ****Timber - Log events with the Timber lib.
 
 
 
@@ -32,7 +35,6 @@ Search for these comments in the app to check the steps needed to implement that
 
 - JetPack's Architecture components:
 
-  * LifeCycles
   * Paging
   * Room
   * WorkManager
