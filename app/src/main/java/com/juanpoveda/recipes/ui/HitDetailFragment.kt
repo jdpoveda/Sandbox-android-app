@@ -31,7 +31,12 @@ class HitDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HitDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        // ****SafeArgs s5: Get the passed args by using the auto-generated HitDetailFragmentArgs class. The args value will contain
+        // all the previously defined args and is a HitDetailFragmentArgs object.
+        val args = HitDetailFragmentArgs.fromBundle(requireArguments())
+
+        binding.titleTextView.text = args.selectedHit.recipe.label
 
         binding.stepsButton.setOnClickListener {
             findNavController().navigate(R.id.action_hitDetailFragment_to_stepsFragment)

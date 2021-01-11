@@ -1,6 +1,7 @@
 package com.juanpoveda.recipes.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 // ****Retrofit s3: Create the Data Classes for the endpoint response objects
 data class SearchResponse (
@@ -16,7 +17,7 @@ data class Hit (
     @SerializedName("bookmarked") val bookmarked: Boolean,
     @SerializedName("bought") val bought: Boolean,
     @SerializedName("recipe") val recipe: Recipe
-)
+): Serializable
 
 data class Recipe (
     @SerializedName("calories") val calories: Float,

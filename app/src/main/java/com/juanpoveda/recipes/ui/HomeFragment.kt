@@ -68,7 +68,15 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener {
     override fun onHitClick(item: Hit) {
         println("******* Hit clicked! " + item)
         Toast.makeText(activity, "Hit clicked!", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(R.id.action_homeFragment_to_hitDetailFragment) // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action
+        // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action. If data must be passed between
+        // fragments, check ****SafeArgs. The following line is commented because in this fragment we want to pass data to the next fragment.
+        //findNavController().navigate(R.id.action_homeFragment_to_hitDetailFragment)
+
+        // ****SafeArgs s4: Change the call to navigate(). Normally, the call requires only the id of the action, like
+        // .navigate(R.id.action_homeFragment_to_hitDetailFragment) but now it must include the Directions class and the specific action, like
+        // .navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item)). Note that the call will expect the argument that
+        // were defined in the previous step.
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item))
     }
 
 }

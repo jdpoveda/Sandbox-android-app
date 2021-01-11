@@ -38,6 +38,12 @@
        <action
            android:id="@+id/action_hitDetailFragment_to_stepsFragment"
            app:destination="@id/stepsFragment" />
+       <!-- ****SafeArgs s3: Add the arguments to the Fragment that will expect the values. To achieve this, select the Fragment in the design view and
+                click + in the arguments section, there you can select the argument type, name and default value. In this case is a Serializable type because
+                we need to pass a Hit object. REBUILD THE PROJECT AFTER ADDING THE ARGUMENTS! -->
+       <argument
+           android:name="selectedHit"
+           app:argType="com.juanpoveda.recipes.model.Hit" />
    </fragment>
     <fragment
         android:id="@+id/ingredientDetailFragment"

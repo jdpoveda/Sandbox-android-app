@@ -2,6 +2,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    // ****SafeArgs s2: Apply the plugin in the app-level gradle. AND SYNC+REBUILD THE PROJECT! After rebuilding, the project will include a generated
+    // NavDirection class for each Fragment. These classes represent navigation from all the app's actions.
+    // For example, HomeFragment now has a generated HomeFragmentDirections class.
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -84,4 +88,5 @@ dependencies {
 
     // ****NavigationDrawer s1: Add dependency
     implementation "com.google.android.material:material:1.2.1"
+
 }

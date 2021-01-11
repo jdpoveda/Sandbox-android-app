@@ -11,6 +11,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Navigation - Implement Navigation component (Jetpack Navigation)
 
+// ****SafeArgs - Pass data between Fragments (part of Jetpack Navigation)
+
 // ****NavigationDrawer - Add a Navigation Drawer to the app using Jetpack's navigation features
 
 // ****RecyclerView - Implement a RecyclerView using androidx, itemClickListener and ViewBinding.
