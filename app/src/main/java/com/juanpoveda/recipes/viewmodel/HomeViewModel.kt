@@ -26,7 +26,7 @@ savedStateHandle: SavedStateHandle
         get() = _hitList
 
     init {
-        searchHits("")
+        _hitList.value = emptyList()
     }
 
     // ****ViewModel s4: Create the methods that will be consumed by the View, for example this one will receive the query param from the view and

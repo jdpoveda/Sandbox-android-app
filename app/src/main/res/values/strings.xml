@@ -2,4 +2,7 @@
     <string name="app_name">Recipes</string>
     <string name="share_title">Sharing recipe: %s</string>
     <string name="share">Share</string>
+    <string name="recipe_calories_value">Calories: %s kCal.</string>
+    <string name="recipe_time_value">Time: %s min.</string>
+    <string name="about_text">About: Developed by Juan Poveda. This is a sandbox app!</string>
 </resources>

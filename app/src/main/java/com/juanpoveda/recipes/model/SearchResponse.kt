@@ -59,5 +59,6 @@ data class Ingredient (
     @SerializedName("measure") val measure: String,
     @SerializedName("quantity") val quantity: Float,
     @SerializedName("text") val text: String,
-    @SerializedName("weight") val weight: Float
+    @SerializedName("weight") val weight: Float,
+    var customText: String
 ): Serializable

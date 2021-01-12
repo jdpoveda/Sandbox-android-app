@@ -5,6 +5,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****ViewModel - Create ViewModel and connect with View and repository. (Jetpack LiveData, ViewModel)
 
+// ****Transformations - Use Transformations to apply changes to existing LiveData variables in one single line.
+
 // ****Repository - Create a Repository to manage all the data source in 1 place
 
 // ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)

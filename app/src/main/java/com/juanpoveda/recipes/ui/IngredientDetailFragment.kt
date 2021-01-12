@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
@@ -36,13 +37,16 @@ class IngredientDetailFragment : Fragment(), IngredientListAdapter.OnIngredientC
         super.onActivityCreated(savedInstanceState)
 
         val args = IngredientDetailFragmentArgs.fromBundle(requireArguments())
-        // TODO: Use the ViewModel, don't pass the data from the bundle, the data needs to be saved in the viewmodel!
+        viewModel.setIngredientList(args.recipe.ingredients)
 
-        this.ingredientListAdapter = IngredientListAdapter(args.recipe.ingredients, this)
-        binding.ingredientListRecyclerView.setHasFixedSize(true)
-        binding.ingredientListRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.ingredientListRecyclerView.adapter = this.ingredientListAdapter
-        (binding.ingredientListRecyclerView.adapter as IngredientListAdapter?)?.notifyDataSetChanged()
+        // ****Transformations s3: Observe the Transformation val rather than the normal LiveData value
+        viewModel.transformedIngredientList.observe(viewLifecycleOwner) {
+            this.ingredientListAdapter = IngredientListAdapter(it, this)
+            binding.ingredientListRecyclerView.setHasFixedSize(true)
+            binding.ingredientListRecyclerView.layoutManager = LinearLayoutManager(activity)
+            binding.ingredientListRecyclerView.adapter = this.ingredientListAdapter
+            (binding.ingredientListRecyclerView.adapter as IngredientListAdapter?)?.notifyDataSetChanged()
+        }
 
     }
 

@@ -36,7 +36,7 @@ class IngredientListAdapter(private val items: List<Ingredient>, listener: OnIng
         with(holder) {
             with(ingredientList[position]) {
                 // ****ViewBindingRecyclerView s4: To access the views of the layout, just use the binding val set in HitsViewHolder:
-                binding.ingredientTitleTextView.text = this.text
+                binding.ingredientTitleTextView.text = this.customText
                 // ****Glide s2: Load the image url into the desired ImageView
                 Glide.with(binding.root).load(this.image).into(binding.ingredientImageView)
                 binding.root.setOnClickListener {

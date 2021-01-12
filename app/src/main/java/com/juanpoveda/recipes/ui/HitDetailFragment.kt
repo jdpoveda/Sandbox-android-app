@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.R
@@ -19,7 +21,7 @@ class HitDetailFragment : Fragment() {
         fun newInstance() = HitDetailFragment()
     }
 
-    private lateinit var viewModel: HitDetailViewModel
+    private val viewModel: HitDetailViewModel by viewModels()
     private var _binding: HitDetailFragmentBinding? = null //View binding to replace findViewById
     private val binding get() = _binding!!
 
@@ -34,16 +36,18 @@ class HitDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HitDetailViewModel::class.java)
 
         // ****SafeArgs s5: Get the passed args by using the auto-generated HitDetailFragmentArgs class. The args value will contain
         // all the previously defined args and is a HitDetailFragmentArgs object.
         val args = HitDetailFragmentArgs.fromBundle(requireArguments())
+        viewModel.setNewHit(args.selectedHit)
 
-        binding.titleTextView.text = args.selectedHit.recipe.label
-        binding.caloriesTextView.text = "Calories: ${args.selectedHit.recipe.calories} kCal."
-        binding.totalTimeTextView.text = "Time: ${args.selectedHit.recipe.totalTime} min."
-        Glide.with(binding.root).load(args.selectedHit.recipe.image).into(binding.recipeDetailImageView)
+        viewModel.selectedHit.observe(viewLifecycleOwner) {
+            binding.titleTextView.text = it.recipe.label
+            binding.caloriesTextView.text = getString(R.string.recipe_calories_value).format(it.recipe.calories)
+            binding.totalTimeTextView.text = getString(R.string.recipe_time_value).format(it.recipe.totalTime)
+            Glide.with(binding.root).load(args.selectedHit.recipe.image).into(binding.recipeDetailImageView)
+        }
 
         binding.stepsButton.setOnClickListener {
             findNavController().navigate(R.id.action_hitDetailFragment_to_stepsFragment)
