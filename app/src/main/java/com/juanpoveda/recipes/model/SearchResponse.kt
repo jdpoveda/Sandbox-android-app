@@ -39,7 +39,7 @@ data class Recipe (
     @SerializedName("uri") val uri: String,
     @SerializedName("url") val url: String,
     @SerializedName("yield") val yield: Int
-)
+): Serializable
 
 data class Digest (
     @SerializedName("daily") val daily: Float,
@@ -50,7 +50,7 @@ data class Digest (
     @SerializedName("tag") val tag: String,
     @SerializedName("total") val total: Float,
     @SerializedName("unit") val unit: String
-)
+): Serializable
 
 data class Ingredient (
     @SerializedName("food") val food: String,
@@ -60,4 +60,4 @@ data class Ingredient (
     @SerializedName("quantity") val quantity: Float,
     @SerializedName("text") val text: String,
     @SerializedName("weight") val weight: Float
-)
+): Serializable

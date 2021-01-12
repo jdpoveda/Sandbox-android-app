@@ -49,7 +49,11 @@
         android:id="@+id/ingredientDetailFragment"
         android:name="com.juanpoveda.recipes.ui.IngredientDetailFragment"
         android:label="ingredient_detail_fragment"
-        tools:layout="@layout/ingredient_detail_fragment" />
+        tools:layout="@layout/ingredient_detail_fragment" >
+        <argument
+            android:name="recipe"
+            app:argType="com.juanpoveda.recipes.model.Recipe" />
+    </fragment>
     <fragment
         android:id="@+id/stepsFragment"
         android:name="com.juanpoveda.recipes.ui.StepsFragment"

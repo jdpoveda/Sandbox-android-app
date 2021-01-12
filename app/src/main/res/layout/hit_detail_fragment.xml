@@ -19,15 +19,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/descriptionTextView"
+        android:id="@+id/caloriesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="Description..."
+        android:layout_marginTop="16dp"
         android:padding="10dp"
+        android:text="Calories: 400"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeDetailImageView" />
+
+    <TextView
+        android:id="@+id/totalTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="10dp"
+        android:text="Total time: 4m"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caloriesTextView" />
 
     <Button
         android:id="@+id/ingredientDetailButton"
@@ -37,7 +48,7 @@
         android:layout_marginTop="16dp"
         android:text="Go to Ingredient Detail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/totalTimeTextView" />
 
     <Button
         android:id="@+id/stepsButton"
@@ -45,8 +56,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Go to Steps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ingredientDetailButton"
+        app:layout_constraintTop_toBottomOf="@+id/totalTimeTextView" />
+
+    <ImageView
+        android:id="@+id/recipeDetailImageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="28dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientDetailButton" />
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

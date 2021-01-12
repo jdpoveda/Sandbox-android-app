@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.databinding.HitDetailFragmentBinding
 import com.juanpoveda.recipes.databinding.HomeFragmentBinding
@@ -40,12 +41,15 @@ class HitDetailFragment : Fragment() {
         val args = HitDetailFragmentArgs.fromBundle(requireArguments())
 
         binding.titleTextView.text = args.selectedHit.recipe.label
+        binding.caloriesTextView.text = "Calories: ${args.selectedHit.recipe.calories} kCal."
+        binding.totalTimeTextView.text = "Time: ${args.selectedHit.recipe.totalTime} min."
+        Glide.with(binding.root).load(args.selectedHit.recipe.image).into(binding.recipeDetailImageView)
 
         binding.stepsButton.setOnClickListener {
             findNavController().navigate(R.id.action_hitDetailFragment_to_stepsFragment)
         }
         binding.ingredientDetailButton.setOnClickListener {
-            findNavController().navigate(R.id.action_hitDetailFragment_to_ingredientDetailFragment)
+            findNavController().navigate(HitDetailFragmentDirections.actionHitDetailFragmentToIngredientDetailFragment(args.selectedHit.recipe))
         }
     }
 
