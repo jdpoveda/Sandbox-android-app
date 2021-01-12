@@ -7,6 +7,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Transformations - Use Transformations to apply changes to existing LiveData variables in one single line.
 
+// ****Room - Create a Room database. (Jetpack Room)
+
 // ****Repository - Create a Repository to manage all the data source in 1 place
 
 // ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
@@ -33,6 +35,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Timber - Log events with the Timber lib.
 
+// ****InstrumentedTest - Setup an instrumented test (requires Android device)
+
 
 
 ----- Pending ------
@@ -40,7 +44,6 @@ Search for these comments in the app to check the steps needed to implement that
 - JetPack's Architecture components:
 
   * Paging
-  * Room
   * WorkManager
 
 - JetPack's UI:
@@ -65,6 +68,6 @@ Search for these comments in the app to check the steps needed to implement that
 
   * AppCompat
   * Android KTX
-  * Test
+  * Test (instrumented done)
 
 
