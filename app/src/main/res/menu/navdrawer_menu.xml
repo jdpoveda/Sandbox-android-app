@@ -5,6 +5,9 @@
     <!-- ****NavigationDrawer s4: Add each item to display in the drawer. The id must be THE SAME id for the
              fragment in the nav_graph.xml file, in this case @+id/aboutFragment -->
     <item
+        android:id="@+id/reviewedRecipesFragment"
+        android:title="Reviewed Recipes" />
+    <item
         android:id="@+id/aboutFragment"
         android:title="About" />
 </menu>

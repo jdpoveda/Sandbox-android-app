@@ -1,7 +1,6 @@
 package com.juanpoveda.recipes.ui
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -11,8 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.databinding.HitDetailFragmentBinding
-import com.juanpoveda.recipes.databinding.HomeFragmentBinding
-import com.juanpoveda.recipes.databinding.IngredientDetailFragmentBinding
 import com.juanpoveda.recipes.viewmodel.HitDetailViewModel
 
 class HitDetailFragment : Fragment() {

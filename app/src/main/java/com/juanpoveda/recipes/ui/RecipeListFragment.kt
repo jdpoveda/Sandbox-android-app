@@ -7,38 +7,43 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
-import com.juanpoveda.recipes.databinding.HomeFragmentBinding
+import com.juanpoveda.recipes.database.RecipesDatabase
+import com.juanpoveda.recipes.databinding.RecipeListFragmentBinding
 import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
+import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory
 
 // ****ViewModel s1: Generate this Fragment (View) and the corresponding ViewModel by right click
 // on the package -> New -> Fragment -> Fragment (With ViewModel).
 // This action will generate HomeViewModel class also.
-class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener, SearchView.OnQueryTextListener {
+class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, SearchView.OnQueryTextListener {
 
     companion object {
-        fun newInstance() = HomeFragment()
+        fun newInstance() = RecipeListFragment()
     }
 
-    // ****ViewModel s5: Create a class val for the viewModel and initialize it by using: viewModel: HomeViewModel by viewModels()
-    private val viewModel: HomeViewModel by viewModels()
+    // ****ViewModel s6: There are 2 options:
+    // 1. If you don't need to pass any param to the ViewModel: Create a class val for the viewModel and initialize it by using:
+    // private val viewModel: HomeViewModel by viewModels() and that's all - no need to set the viewModel value later in the onActivityCreated method.
+    // 2. If some param must be passed to the ViewModel, a Factory class must be created and you need to add the viewModel var as lateinit to initialize
+    // it later in the onActivityCreated method.
+    private lateinit var viewModel: HomeViewModel
     // ****RecyclerView s4: Create a field for the adapter in the Activity/Fragment
     private var hitListAdapter: HitListAdapter? = null
 
     // ****ViewBindingFragment s2: As we have viewBinding = true in the app/gradle file, the Binging classes
     // like HomeFragmentBindingare generated. Create a field in the Fragment this way:
-    private var _binding: HomeFragmentBinding? = null //View binding to replace findViewById
+    private var _binding: RecipeListFragmentBinding? = null //View binding to replace findViewById
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // ****ViewBindingFragment s3: The inflate layout changes a little bit, here is the example for a Fragment (It's slighly different for an Activity!).
-        _binding = HomeFragmentBinding.inflate(layoutInflater, container, false) //Inflate with HomeFragmentBinding as we want to bind bind the view
+        _binding = RecipeListFragmentBinding.inflate(layoutInflater, container, false) //Inflate with HomeFragmentBinding as we want to bind bind the view
         return binding.root
     }
 
@@ -47,7 +52,14 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener, SearchView.O
         // ****ViewBindingFragment s4: We can call the views of the layout directly with binding.viewName
         binding.recipeSearchView.setOnQueryTextListener(this)
 
-        // ****ViewModel s6: Now, the viewModel can be used to observe the LiveData fields
+        // ****ViewModel s7: You don't need to add anything if you took the option 1 in the previous step. However, If you took the option 2,
+        // then you need to initialize the viewModel and pass all the required params this way:
+        val application = requireNotNull(this.activity).application
+        val dataSource = RecipesDatabase.getInstance(application).recipesDatabaseDAO
+        val viewModelFactory = HomeViewModelFactory(dataSource, application) // ****Room s14: Pass the DAO as argument in the ViewModels where you want to use the database.
+        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+
+        // ****ViewModel s8: Now, the viewModel can be used to observe the LiveData fields
         viewModel.hitList.observe(viewLifecycleOwner) {
             // ****RecyclerView s5: Instantiate the adapter, pass the clickListener implemented in the Fragment and the list of items.
             it?.let { it1 ->
@@ -76,11 +88,16 @@ class HomeFragment : Fragment(), HitListAdapter.OnHitClickListener, SearchView.O
         // .navigate(R.id.action_homeFragment_to_hitDetailFragment) but now it must include the Directions class and the specific action, like
         // .navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item)). Note that the call will expect the argument that
         // were defined in the previous step.
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHitDetailFragment(item))
+        findNavController().navigate(RecipeListFragmentDirections.actionRecipeListFragmentToHitDetailFragment(item))
+    }
+
+    override fun onAddReviewClick(item: Hit) {
+        Toast.makeText(activity, "Add review clicked!", Toast.LENGTH_SHORT).show()
+        viewModel.addReview(item)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        // ****ViewModel s7: The View must inform the viewModel if the user entered new information, like this search. The ViewModel must have
+        // ****ViewModel s9: The View must inform the viewModel if the user entered new information, like this search. The ViewModel must have
         // methods to manage this and update the MutableLiveData so the UI can get the updates in the Observer
         viewModel.searchHits(query.orEmpty())
         binding.root.requestFocus() // To avoid keeping the focus in the SearchView after submit

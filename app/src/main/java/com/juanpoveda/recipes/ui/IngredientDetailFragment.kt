@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
 import com.juanpoveda.recipes.adapter.IngredientListAdapter
-import com.juanpoveda.recipes.databinding.HomeFragmentBinding
 import com.juanpoveda.recipes.databinding.IngredientDetailFragmentBinding
 import com.juanpoveda.recipes.model.Ingredient
 import com.juanpoveda.recipes.viewmodel.IngredientDetailViewModel

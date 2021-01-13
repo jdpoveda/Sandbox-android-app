@@ -28,7 +28,7 @@ class RecipesDatabaseTest {
     private lateinit var db: RecipesDatabase
 
     // ****InstrumentedTest s2: Define the steps that needs to be executed before the test with @Before
-    // ****Room s13: In order to use the DB, we need to create it following this process
+    // ****RoomTest s1: In order to use the DB, we need to create it following this process
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
@@ -42,7 +42,7 @@ class RecipesDatabaseTest {
     }
 
     // ****InstrumentedTest s3: Define the steps that needs to be executed after the test with @After
-    // ****Room s15: Wen no more transactions needed, close the DB
+    // ****RoomTest s3: Wen no more transactions needed, close the DB
     @After
     @Throws(IOException::class)
     fun closeDb() {
@@ -50,10 +50,10 @@ class RecipesDatabaseTest {
     }
 
     // ****InstrumentedTest s3: Define the Test with @Test, finish it with an assertion
-    // ****Room s14: To call the db functions that we defined in the DAO use the following syntax
+    // ****RoomTest s2: To call the db functions that we defined in the DAO use the following syntax
     @Test
     @Throws(Exception::class)
-    fun insertAndGetRecipeReview() {
+    suspend fun insertAndGetRecipeReview() {
         val review = RecipeReview()
         recipesDao.insert(review)
         val lastReview = recipesDao.getLatestRecipeReview()

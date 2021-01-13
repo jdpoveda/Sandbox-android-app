@@ -7,7 +7,9 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Transformations - Use Transformations to apply changes to existing LiveData variables in one single line.
 
-// ****Room - Create a Room database. (Jetpack Room)
+// ****Room - Create a Room database. (Jetpack Room, Coroutines)
+
+// ****RoomTest - Create an instrumented test to test Room database. (Testing)
 
 // ****Repository - Create a Repository to manage all the data source in 1 place
 
@@ -35,7 +37,7 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Timber - Log events with the Timber lib.
 
-// ****InstrumentedTest - Setup an instrumented test (requires Android device)
+// ****InstrumentedTest - Setup an instrumented test (requires Android device). (Testing)
 
 
 

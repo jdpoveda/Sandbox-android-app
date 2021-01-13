@@ -11,6 +11,8 @@ data class RecipeReview (
     var id: Long = 0L,
     @ColumnInfo(name = "recipe_name")
     var recipeName: String = "",
+    @ColumnInfo(name = "image_url")
+    var imageUrl: String = "",
     @ColumnInfo(name = "rating")
     var rating: Int = -1,
     @ColumnInfo(name = "real_spent_time")

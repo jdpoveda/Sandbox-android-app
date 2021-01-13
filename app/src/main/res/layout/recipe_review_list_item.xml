@@ -9,19 +9,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/hitTitleTextView"
+        android:id="@+id/reviewTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Recipe Title"
+        android:layout_marginEnd="16dp"
+        android:text="Review Title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addReviewButton"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/hitImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toEndOf="@+id/ingredientImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/hitImageView"
+        android:id="@+id/reviewImageView"
         android:layout_width="80dp"
         android:layout_height="72dp"
         android:layout_marginStart="16dp"
@@ -29,15 +30,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <Button
-        android:id="@+id/addReviewButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Review"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

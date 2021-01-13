@@ -39,6 +39,9 @@ class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener)
                 binding.hitTitleTextView.text = this.recipe.label
                 // ****Glide s2: Load the image url into the desired ImageView
                 Glide.with(binding.root).load(this.recipe.image).into(binding.hitImageView)
+                binding.addReviewButton.setOnClickListener {
+                    hitClickListener.onAddReviewClick(this)
+                }
                 binding.root.setOnClickListener {
                     hitClickListener.onHitClick(this)
                 }
@@ -53,5 +56,6 @@ class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener)
     // ****RecyclerView s3-2: Add an Interface to listen for the item click events (if needed)
     interface OnHitClickListener {
         fun onHitClick(item: Hit)
+        fun onAddReviewClick(item: Hit)
     }
 }

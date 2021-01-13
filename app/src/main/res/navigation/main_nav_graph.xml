@@ -5,16 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/recipeListFragment">
     <!-- ****Navigation s4: Add the start destination fragment in the Design view -->
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.juanpoveda.recipes.ui.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
+        android:id="@+id/recipeListFragment"
+        android:name="com.juanpoveda.recipes.ui.RecipeListFragment"
+        android:label="recipe_list_fragment"
+        tools:layout="@layout/recipe_list_fragment" >
         <!-- ****Navigation s6: Add the action between 2 fragments in the design view (this is the arrow between fragments) -->
         <action
-            android:id="@+id/action_homeFragment_to_hitDetailFragment"
+            android:id="@+id/action_recipeListFragment_to_hitDetailFragment"
             app:destination="@id/hitDetailFragment" />
     </fragment>
     <!-- ****Navigation s5: Add the other fragments needed in the flow with New destination button in design view -->
@@ -34,7 +34,7 @@
        <action
            android:id="@+id/action_hitDetailFragment_to_ingredientDetailFragment"
            app:destination="@id/ingredientDetailFragment"
-           app:popUpTo="@id/homeFragment" />
+           app:popUpTo="@id/recipeListFragment" />
        <action
            android:id="@+id/action_hitDetailFragment_to_stepsFragment"
            app:destination="@id/stepsFragment" />
@@ -66,4 +66,8 @@
         android:name="com.juanpoveda.recipes.ui.AboutFragment"
         android:label="about_fragment"
         tools:layout="@layout/about_fragment" />
+    <fragment
+        android:id="@+id/reviewedRecipesFragment"
+        android:name="com.juanpoveda.recipes.ui.ReviewedRecipesFragment"
+        android:label="ReviewedRecipesFragment" />
 </navigation>
