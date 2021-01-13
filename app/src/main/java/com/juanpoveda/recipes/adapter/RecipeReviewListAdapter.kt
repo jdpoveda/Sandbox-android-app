@@ -24,7 +24,7 @@ class RecipeReviewListAdapter(private val items: List<RecipeReview>, listener: O
 
         with(holder) {
             with(recipeReviewList[position]) {
-                binding.reviewTitleTextView.text = this.recipeName
+                binding.reviewPointsTextView.text = "${this.rating}/5"
                 Glide.with(binding.root).load(this.imageUrl).into(binding.reviewImageView)
                 binding.root.setOnClickListener {
                     recipeReviewClickListener.onRecipeReviewClick(this)

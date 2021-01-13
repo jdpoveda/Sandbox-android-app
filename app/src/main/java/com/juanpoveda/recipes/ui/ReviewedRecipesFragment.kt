@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.adapter.RecipeReviewListAdapter
 import com.juanpoveda.recipes.database.RecipeReview
@@ -41,10 +42,14 @@ class ReviewedRecipesFragment : Fragment(), RecipeReviewListAdapter.OnRecipeRevi
         val viewModelFactory = HomeViewModelFactory(dataSource, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
+        // ****RecyclerViewGridLayout s1: Add a GridLayoutManager to the Recyclerview's layoutManager instead the LinearLayoutManager. The spanCount is the
+        // number of items that you want to display per row.
+        // To make a Grid with horizontal scrolling: GridLayoutManager(activity, 4, GridLayoutManager.HORIZONTAL, false)
+        binding.recipesReviewedRecyclerView.layoutManager = GridLayoutManager(activity, 4)
+
         viewModel.reviewedRecipes.observe(viewLifecycleOwner) {
             it?.let { it1 ->
                 this.recipesReviewedListAdapter = RecipeReviewListAdapter(it1, this)
-                binding.recipesReviewedRecyclerView.layoutManager = LinearLayoutManager(activity)
                 binding.recipesReviewedRecyclerView.adapter = this.recipesReviewedListAdapter
                 (binding.recipesReviewedRecyclerView.adapter as RecipeReviewListAdapter?)?.notifyDataSetChanged()
             }

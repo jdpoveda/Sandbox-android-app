@@ -31,6 +31,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****RecyclerViewDiffUtil - Add DiffUtil for a RecyclerView. This helps to achieve a better performance avoiding the call of notifyDataSetChanged()
 
+// ****RecyclerViewGridLayout - RecyclerView with a GridLayout to display a grid of items
+
 // ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
 
 // ****Retrofit - Implement retrofit to call endpoints and get the data
