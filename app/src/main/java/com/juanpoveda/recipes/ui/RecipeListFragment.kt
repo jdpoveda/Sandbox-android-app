@@ -64,7 +64,6 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
             // ****RecyclerView s5: Instantiate the adapter, pass the clickListener implemented in the Fragment and the list of items.
             it?.let { it1 ->
                 this.hitListAdapter = HitListAdapter(it1, this)
-                binding.recipesRecyclerView.setHasFixedSize(true)
                 binding.recipesRecyclerView.layoutManager = LinearLayoutManager(activity)
                 binding.recipesRecyclerView.adapter = this.hitListAdapter
                 (binding.recipesRecyclerView.adapter as HitListAdapter?)?.notifyDataSetChanged()

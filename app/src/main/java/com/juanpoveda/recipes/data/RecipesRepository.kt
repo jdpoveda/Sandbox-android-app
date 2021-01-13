@@ -6,7 +6,6 @@ import com.juanpoveda.recipes.BuildConfig
 import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.model.SearchResponse
 import com.juanpoveda.recipes.network.RecipesApi
-import com.juanpoveda.recipes.network.Webservice
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

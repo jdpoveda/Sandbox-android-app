@@ -29,6 +29,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****RecyclerView - Implement a RecyclerView using androidx, itemClickListener and ViewBinding.
 
+// ****RecyclerViewDiffUtil - Add DiffUtil for a RecyclerView. This helps to achieve a better performance avoiding the call of notifyDataSetChanged()
+
 // ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
 
 // ****Retrofit - Implement retrofit to call endpoints and get the data

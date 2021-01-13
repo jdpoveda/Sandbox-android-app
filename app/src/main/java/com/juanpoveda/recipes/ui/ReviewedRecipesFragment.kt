@@ -7,19 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanpoveda.recipes.R
-import com.juanpoveda.recipes.adapter.HitListAdapter
 import com.juanpoveda.recipes.adapter.RecipeReviewListAdapter
 import com.juanpoveda.recipes.database.RecipeReview
 import com.juanpoveda.recipes.database.RecipesDatabase
-import com.juanpoveda.recipes.databinding.RecipeListFragmentBinding
 import com.juanpoveda.recipes.databinding.ReviewedRecipesFragmentBinding
-import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
-import com.juanpoveda.recipes.viewmodel.ReviewedRecipesViewModel
 import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory
 
 class ReviewedRecipesFragment : Fragment(), RecipeReviewListAdapter.OnRecipeReviewClickListener {
@@ -50,7 +44,6 @@ class ReviewedRecipesFragment : Fragment(), RecipeReviewListAdapter.OnRecipeRevi
         viewModel.reviewedRecipes.observe(viewLifecycleOwner) {
             it?.let { it1 ->
                 this.recipesReviewedListAdapter = RecipeReviewListAdapter(it1, this)
-                binding.recipesReviewedRecyclerView.setHasFixedSize(true)
                 binding.recipesReviewedRecyclerView.layoutManager = LinearLayoutManager(activity)
                 binding.recipesReviewedRecyclerView.adapter = this.recipesReviewedListAdapter
                 (binding.recipesReviewedRecyclerView.adapter as RecipeReviewListAdapter?)?.notifyDataSetChanged()
