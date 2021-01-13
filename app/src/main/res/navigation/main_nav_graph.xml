@@ -58,7 +58,11 @@
         android:id="@+id/stepsFragment"
         android:name="com.juanpoveda.recipes.ui.StepsFragment"
         android:label="steps_fragment"
-        tools:layout="@layout/steps_fragment" />
+        tools:layout="@layout/steps_fragment" >
+        <argument
+            android:name="recipe"
+            app:argType="com.juanpoveda.recipes.model.Recipe" />
+    </fragment>
     <!-- ****NavigationDrawer s2: All the fragments that will be included in the drawer must be in the nav_graph.xml file
             and have an id like @+id/aboutFragment in this case! (even if they are not connected to any other fragments)-->
     <fragment

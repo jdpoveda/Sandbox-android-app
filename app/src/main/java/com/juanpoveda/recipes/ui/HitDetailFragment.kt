@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -46,8 +47,17 @@ class HitDetailFragment : Fragment() {
             Glide.with(binding.root).load(args.selectedHit.recipe.image).into(binding.recipeDetailImageView)
         }
 
+        // ****NavigationWithLiveData s5: Observe the navigation variable of the ViewModel and launch the navigation event when it changes.
+        // Don't forget to clear the navigation variable at the end!!!
+        viewModel.navigateToStepsFragment.observe(viewLifecycleOwner) {recipe ->
+            recipe?.let { //Here the ? operator is needed because recipe can be null and it'll cause a crash
+                findNavController().navigate(HitDetailFragmentDirections.actionHitDetailFragmentToStepsFragment(recipe))
+                viewModel.doneNavigatingToStepsFragment()
+            }
+        }
         binding.stepsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_hitDetailFragment_to_stepsFragment)
+            // ****NavigationWithLiveData s6: Call the launchNavigation method in the ViewModel
+            viewModel.launchNavigationToStepsFragment(args.selectedHit.recipe)
         }
         binding.ingredientDetailButton.setOnClickListener {
             findNavController().navigate(HitDetailFragmentDirections.actionHitDetailFragmentToIngredientDetailFragment(args.selectedHit.recipe))

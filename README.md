@@ -19,6 +19,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Navigation - Implement Navigation component (Jetpack Navigation)
 
+// ****NavigationWithLiveData - Implement Navigation between Fragments using LiveData. This is helpful when you want to launch fragments after performing some tasks like network calls or database operations (Jetpack Navigation, LiveData)
+
 // ****SafeArgs - Pass data between Fragments (part of Jetpack Navigation)
 
 // ****LifeCycle - Use the Jetpack's LifeCycle lib to observe changes in the lifecycle of an Activity/Fragment  (Jetpack LifeCycles)
