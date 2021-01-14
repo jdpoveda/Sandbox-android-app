@@ -9,9 +9,9 @@ import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.model.SearchResponse
 import com.juanpoveda.recipes.network.RecipesApi
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
+// ****RecyclerViewErrorHandling s1: Add an Enum with the possible API states
+enum class RecipesApiStatus { LOADING, ERROR, DONE }
 
 // ****ViewModel s2: Generate the ViewModel (This one is automatically generated from the previous step). Here, the class can extend from ViewModel() or
 // can extend AndroidViewModel(application). The difference is that the AndroidViewModel includes the context.
@@ -30,18 +30,29 @@ class HomeViewModel(val database: RecipesDatabaseDAO,
         get() = _lastReviewedRecipe
     // ****Room s18: If the DAO returns a LiveData object, then it can be called directly and Room will update it automatically.
     val reviewedRecipes = database.getAllRecipeReviews()
+    // ****RecyclerViewErrorHandling s2: Add the variables, so the ViewModel can know the current state of the API
+    private val _status = MutableLiveData<RecipesApiStatus>()
+    val status: LiveData<RecipesApiStatus>
+        get() = _status
 
     init {
         _hitList.value = emptyList()
+        _status.value = RecipesApiStatus.DONE
         initializeLastRecipeReview()
     }
 
     // ****ViewModel s4: Create the methods that will be consumed by the View, for example this one will receive the query param from the view and
     // update the recipe list based on the query.
     fun searchHits(query: String) {
+        // ****Retrofit s6: Call the desired request
         viewModelScope.launch {
-            // ****Retrofit s6: call the desired request
-            val call = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, query)
+
+            // ****RecyclerViewErrorHandling s3: Set the status to LOADING because we're going to make an API call
+            _status.value = RecipesApiStatus.LOADING
+            _hitList.value = emptyList()
+
+            // ****Retrofit s6-1: If you want to call without coroutines then this is the way:
+            /*val call = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, query)
             call.enqueue(object: Callback<SearchResponse> {
                 override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                     TODO("Not yet implemented")
@@ -50,7 +61,19 @@ class HomeViewModel(val database: RecipesDatabaseDAO,
                 override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
                     _hitList.value = response.body()?.hits
                 }
-            })
+            }) */
+
+            // ****Retrofit s6-2: To make the calls with coroutines, follow this pattern (it's easier to read and more efficient)
+            try {
+                val listResult = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, query)
+                _hitList.value = listResult.hits
+                // ****RecyclerViewErrorHandling s4: Set the status to DONE if the call is successful and the values were updated
+                _status.value = RecipesApiStatus.DONE
+            } catch (e: Exception) {
+                // ****RecyclerViewErrorHandling s5: Set the status to ERROR if the catch block is executed. Also clear the results
+                _status.value = RecipesApiStatus.ERROR
+                _hitList.value = emptyList()
+            }
         }
     }
 

@@ -35,6 +35,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****RecyclerViewHeader - Add a header (or multiple view types) to an existing RecyclerView
 
+// ****RecyclerViewErrorHandling - Add status to an existing RecyclerView, that way the app can show loading and network error images.
+
 // ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
 
 // ****Retrofit - Implement retrofit to call endpoints and get the data

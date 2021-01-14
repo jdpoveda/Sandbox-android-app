@@ -11,11 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
 import com.juanpoveda.recipes.database.RecipesDatabase
 import com.juanpoveda.recipes.databinding.RecipeListFragmentBinding
 import com.juanpoveda.recipes.model.Hit
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
+import com.juanpoveda.recipes.viewmodel.RecipesApiStatus
 import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory
 
 // ****ViewModel s1: Generate this Fragment (View) and the corresponding ViewModel by right click
@@ -67,6 +69,23 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
                 binding.recipesRecyclerView.layoutManager = LinearLayoutManager(activity)
                 binding.recipesRecyclerView.adapter = this.hitListAdapter
                 (binding.recipesRecyclerView.adapter as HitListAdapter?)?.notifyDataSetChanged()
+            }
+        }
+
+        // ****RecyclerViewErrorHandling s6: Observe the status in the View and enable/disable the loading/error images according to the scenario.
+        viewModel.status.observe(viewLifecycleOwner) {
+            when(it) {
+                RecipesApiStatus.LOADING -> {
+                    binding.stateImageView.visibility = View.VISIBLE
+                    binding.stateImageView.setImageResource(R.drawable.loading_animation)
+                }
+                RecipesApiStatus.ERROR -> {
+                    binding.stateImageView.visibility = View.VISIBLE
+                    binding.stateImageView.setImageResource(R.drawable.ic_connection_error)
+                }
+                RecipesApiStatus.DONE -> {
+                    binding.stateImageView.visibility = View.GONE
+                }
             }
         }
 

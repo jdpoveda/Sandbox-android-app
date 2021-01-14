@@ -19,7 +19,7 @@ class RecipesRepository() {
         fun getRecipes(queryParam: String) : LiveData<List<Hit>?> {
             val data = MutableLiveData<List<Hit>?>()
             // ****Retrofit s6: call the desired request
-            val call = RecipesApi.retrofitService.getRecipesByQuery(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
+            val call = RecipesApi.retrofitService.getRecipesByQueryWithoutCoroutines(BuildConfig.WS_APP_ID, BuildConfig.WS_APP_KEY, queryParam)
 
             call.enqueue(object: Callback<SearchResponse> {
                 override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
