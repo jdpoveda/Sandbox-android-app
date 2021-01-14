@@ -5,4 +5,5 @@
     <string name="recipe_calories_value">Calories: %s kCal.</string>
     <string name="recipe_time_value">Time: %s min.</string>
     <string name="about_text">About: Developed by Juan Poveda. This is a sandbox app!</string>
+    <string name="recipe_review_header_title">Saved Recipe Reviews:</string>
 </resources>

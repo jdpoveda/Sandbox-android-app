@@ -33,6 +33,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****RecyclerViewGridLayout - RecyclerView with a GridLayout to display a grid of items
 
+// ****RecyclerViewHeader - Add a header (or multiple view types) to an existing RecyclerView
+
 // ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
 
 // ****Retrofit - Implement retrofit to call endpoints and get the data
