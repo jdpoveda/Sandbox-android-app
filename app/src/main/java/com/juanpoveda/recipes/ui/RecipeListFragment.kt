@@ -85,6 +85,7 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
                 }
                 RecipesApiStatus.DONE -> {
                     binding.stateImageView.visibility = View.GONE
+
                 }
             }
         }

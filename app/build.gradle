@@ -92,4 +92,7 @@ dependencies {
     // ****Timber s1: Add dependency
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
+    // ****WorkManager s1: Add dependency
+    implementation "android.arch.work:work-runtime-ktx:1.0.1"
+
 }

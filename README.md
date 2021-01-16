@@ -17,6 +17,11 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Repository - Create a Repository to manage all the data source in 1 place. Requires: ****Room, ****Retrofit
 
+// ****WorkManager - WorkManager to schedule a background task in an optimized and efficient way. WorkManager is for background work that's deferrable and requires guaranteed execution:
+  - Deferrable means that the work is not required to run immediately. For example, sending analytical data to the server or syncing the database in the background is work that can be deferred.
+  - Guaranteed execution means that the task will run even if the app exits or the device restarts.(Jetpack WorkManager)
+  While WorkManager runs background work, it takes care of compatibility issues and best practices for battery and system health. WorkManager offers compatibility back to API level 14. WorkManager chooses an appropriate way to schedule a background task, depending on the device API level. It might use JobScheduler (on API 23 and higher) or a combination of AlarmManager and BroadcastReceiver.
+
 // ****Navigation - Implement Navigation component (Jetpack Navigation)
 
 // ****NavigationWithLiveData - Implement Navigation between Fragments using LiveData. This is helpful when you want to launch fragments after performing some tasks like network calls or database operations (Jetpack Navigation, LiveData)
