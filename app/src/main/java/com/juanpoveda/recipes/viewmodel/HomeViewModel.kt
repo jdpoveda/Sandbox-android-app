@@ -5,8 +5,7 @@ import androidx.lifecycle.*
 import com.juanpoveda.recipes.BuildConfig
 import com.juanpoveda.recipes.database.RecipeReview
 import com.juanpoveda.recipes.database.RecipesDatabaseDAO
-import com.juanpoveda.recipes.model.Hit
-import com.juanpoveda.recipes.model.SearchResponse
+import com.juanpoveda.recipes.network.Hit
 import com.juanpoveda.recipes.network.RecipesApi
 import kotlinx.coroutines.launch
 

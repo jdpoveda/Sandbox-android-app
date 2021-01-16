@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.databinding.HitListItemBinding
-import com.juanpoveda.recipes.model.Hit
+import com.juanpoveda.recipes.network.Hit
 
 // ****RecyclerView s3: Create the Adapter class for the RecyclerView with the list of items in the constructor. We'll need ViewBinding here also.
 class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener) : RecyclerView.Adapter<HitListAdapter.HitsViewHolder>() {

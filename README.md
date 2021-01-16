@@ -3,6 +3,10 @@ Sandbox Android app with step by step comments to implement the most common and 
 
 Search for these comments in the app to check the steps needed to implement that feature:
 
+// ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
+
+// ****ViewBindingActivity - Use view binding to replace findViewById for Activities (Jetpack ViewBinding)
+
 // ****ViewModel - Create ViewModel and connect with View and repository. (Jetpack LiveData, ViewModel)
 
 // ****Transformations - Use Transformations to apply changes to existing LiveData variables in one single line.
@@ -11,11 +15,7 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****RoomTest - Create an instrumented test to test Room database. (Testing)
 
-// ****Repository - Create a Repository to manage all the data source in 1 place
-
-// ****ViewBindingFragment - Use view binding to replace findViewById for Fragments (Jetpack ViewBinding)
-
-// ****ViewBindingActivity - Use view binding to replace findViewById for Activities (Jetpack ViewBinding)
+// ****Repository - Create a Repository to manage all the data source in 1 place. Requires: ****Room, ****Retrofit
 
 // ****Navigation - Implement Navigation component (Jetpack Navigation)
 

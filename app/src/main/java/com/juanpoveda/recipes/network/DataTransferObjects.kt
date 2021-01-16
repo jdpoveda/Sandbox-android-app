@@ -1,6 +1,9 @@
-package com.juanpoveda.recipes.model
+package com.juanpoveda.recipes.network
 
 import com.google.gson.annotations.SerializedName
+import com.juanpoveda.recipes.database.DatabaseRecipe
+import com.juanpoveda.recipes.domain.IngredientDomain
+import com.juanpoveda.recipes.domain.RecipeDomain
 import java.io.Serializable
 
 // ****Retrofit s3: Create the Data Classes for the endpoint response objects
@@ -62,3 +65,56 @@ data class Ingredient (
     @SerializedName("weight") val weight: Float,
     var customText: String
 ): Serializable
+
+
+// ****Repository s3: Add the functions to convert the Network objects to domain and database models.
+
+fun SearchResponse.asDomainModel(): List<RecipeDomain> {
+    return hits.map {
+        it.recipe.asDomainModel()
+    }
+}
+
+fun SearchResponse.asDatabaseModel(): List<DatabaseRecipe> {
+    return hits.map {
+        it.recipe.asDatabaseModel()
+    }
+}
+
+fun Recipe.asDomainModel(): RecipeDomain {
+    return RecipeDomain(
+        calories = calories,
+        image = image,
+        label = label,
+        shareAs = shareAs,
+        source = source,
+        totalTime = totalTime,
+        totalWeight = totalWeight,
+        //ingredients = ingredientsDomain,
+        url = url
+    )
+}
+
+fun Recipe.asDatabaseModel(): DatabaseRecipe {
+    return DatabaseRecipe(
+        calories = calories,
+        image = image,
+        //ingredientLines = ingredientLines,
+        label = label,
+        //mealType = mealType,
+        shareAs = shareAs,
+        source = source,
+        totalTime = totalTime,
+        totalWeight = totalWeight,
+        //ingredients = ingredientsDatabase,
+        url = url,
+        //cautions = cautions,
+        `yield` = `yield`,
+        //cuisineType = cuisineType,
+        //dietLabels = dietLabels,
+        //digest = digest,
+        //dishType = dishType,
+        //healthLabels = healthLabels,
+        uri = uri
+    )
+}

@@ -15,7 +15,7 @@ import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
 import com.juanpoveda.recipes.database.RecipesDatabase
 import com.juanpoveda.recipes.databinding.RecipeListFragmentBinding
-import com.juanpoveda.recipes.model.Hit
+import com.juanpoveda.recipes.network.Hit
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
 import com.juanpoveda.recipes.viewmodel.RecipesApiStatus
 import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory

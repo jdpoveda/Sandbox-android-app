@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.database.RecipeReview
-import com.juanpoveda.recipes.databinding.IngredientListItemBinding
 import com.juanpoveda.recipes.databinding.RecipeReviewListItemBinding
-import com.juanpoveda.recipes.model.Ingredient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

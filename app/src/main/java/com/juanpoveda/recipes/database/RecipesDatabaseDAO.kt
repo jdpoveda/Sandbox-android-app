@@ -31,4 +31,14 @@ interface RecipesDatabaseDAO {
     // ****Room s6: LiveData can be included in Room operations! Room keeps this LiveData updated for you, which means you only need to explicitly get the data once.
     @Query("SELECT * FROM recipe_review_table ORDER BY id DESC")
     fun getAllRecipeReviews(): LiveData<List<RecipeReview>>
+
+    // ****Repository s4: Add the functions to the DAO to query all the Recipes from the DB and insert a list of Recipes.
+    @Query("SELECT * FROM recipe_table WHERE label LIKE :query")
+    fun getDatabaseRecipesByQuery(query: String): List<DatabaseRecipe>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(recipes: List<DatabaseRecipe>)
+
+    @Query("SELECT * FROM recipe_table")
+    fun getAllDatabaseRecipes(): LiveData<List<DatabaseRecipe>>
 }

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.juanpoveda.recipes.model.Hit
-import com.juanpoveda.recipes.model.Recipe
+import com.juanpoveda.recipes.network.Hit
+import com.juanpoveda.recipes.network.Recipe
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

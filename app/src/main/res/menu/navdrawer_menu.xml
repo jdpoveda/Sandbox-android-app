@@ -10,4 +10,7 @@
     <item
         android:id="@+id/aboutFragment"
         android:title="About" />
+    <item
+        android:id="@+id/recipeListFromRepoFragment"
+        android:title="Recipes from Repo" />
 </menu>

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.databinding.IngredientListItemBinding
-import com.juanpoveda.recipes.model.Ingredient
+import com.juanpoveda.recipes.network.Ingredient
 
 // ****RecyclerViewDiffUtil s4: Change the signature of the adapter class to extend ListAdapter instead RecyclerView.Adapter.
 // We need to pass the DiffCallback as a param. ListAdapter keeps track of the list for you and notifies the adapter when the list is updated.

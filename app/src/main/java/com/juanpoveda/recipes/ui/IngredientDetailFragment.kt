@@ -11,7 +11,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.adapter.IngredientListAdapter
 import com.juanpoveda.recipes.databinding.IngredientDetailFragmentBinding
-import com.juanpoveda.recipes.model.Ingredient
+import com.juanpoveda.recipes.network.Ingredient
 import com.juanpoveda.recipes.viewmodel.IngredientDetailViewModel
 
 class IngredientDetailFragment : Fragment(), IngredientListAdapter.OnIngredientClickListener {
