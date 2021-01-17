@@ -32,7 +32,8 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters) :
         val repository = RecipesRepository(database)
 
         try {
-            repository.refreshRecipes("vodka")
+            val randomQuery = listOf<String>("rum", "tequila", "vodka", "gin", "triple sec", "beer", "whiskey", "wine", "aperol").random()
+            repository.refreshRecipes(randomQuery)
             Timber.d("Work request for sync is run")
         } catch (e: HttpException) {
             Timber.d("Work request failed. launching Retry")

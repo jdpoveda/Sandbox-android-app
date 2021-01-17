@@ -12,5 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- ****DownloadableFontsAndStyles s2: Use the font. Here we'll set the font for the entire app theme so it will be applied to the whole app. The styling can
+         be overridden according to the styling pyramid (from the base to the top). The View attributes will override any other styling.
+         ............View attributes
+         ..........Style
+         ........Default Style
+         ......Theme
+         ....Text Appearance -->
+        <item name="android:fontFamily">@font/advent_pro</item>
+        <item name="fontFamily">@font/advent_pro</item>
     </style>
 </resources>

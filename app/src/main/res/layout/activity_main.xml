@@ -27,10 +27,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- ****NavigationDrawer s6: Add a NavigationView and attach the menu file for the drawer.
                IMPORTANT: android:layout_gravity="start" must be included, otherwise the app will crash-->
+    <!-- ****DownloadableFontsAndStyles s4: Apply the style to the items of the NavDrawer with itemTextAppearance-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemTextAppearance="@style/TextAppearance.NavDrawerItem"
         app:menu="@menu/navdrawer_menu"/>
 </androidx.drawerlayout.widget.DrawerLayout>

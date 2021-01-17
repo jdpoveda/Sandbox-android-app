@@ -32,11 +32,11 @@ class RecipesApplication: Application() {
             .setRequiredNetworkType(NetworkType.UNMETERED) // To use only if wifi network is enabled
             .setRequiresBatteryNotLow(true) // This will run only if teh device has a good battery level
             //.setRequiresCharging(true) // This will require the device to be in charging state
-            .apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    setRequiresDeviceIdle(true) // This constraint runs the work request only when the user isn't actively using the device. This feature is only available in Android 6.0 (Marshmallow) and higher, so add a condition for SDK version M and higher.
-                }
-            }
+            //.apply {
+            //    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //        setRequiresDeviceIdle(true) // This constraint runs the work request only when the user isn't actively using the device. This feature is only available in Android 6.0 (Marshmallow) and higher, so add a condition for SDK version M and higher.
+            //    }
+            //}
             .build()
 
         // ****WorkManager s8: Create a PeriodicWorkRequestBuilder with the previously created Worker and Schedule the work using the
@@ -44,7 +44,7 @@ class RecipesApplication: Application() {
         // If pending (uncompleted) work exists with the same name, the ExistingPeriodicWorkPolicy.KEEP parameter makes the WorkManager keep
         // the previous periodic work and discard the new work request.
         // ****WorkManager s13 (optional): pass the constraints variable to the PeriodicWorkRequestBuilder
-        val repeatingRequest = PeriodicWorkRequestBuilder<RefreshDataWorker>(15, TimeUnit.MINUTES)
+        val repeatingRequest = PeriodicWorkRequestBuilder<RefreshDataWorker>(1, TimeUnit.DAYS)
             .setConstraints(constraints)
             .build()
         Timber.d("Periodic Work request for sync is scheduled")

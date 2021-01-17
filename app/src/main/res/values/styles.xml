@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ****DownloadableFontsAndStyles s3: Create a style with all the attributes you want to change. This one is for text, so the naming convention is TextAppearance.xxxx -->
+    <style name="TextAppearance.NavDrawerItem" parent="TextAppearance.MaterialComponents.Headline6" >
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">@font/advent_pro_semibold</item>
+    </style>
+</resources>
