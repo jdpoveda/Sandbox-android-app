@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ****CustomView s13 (To add custom attributes): Create the file res/values/attrs.xml and define a declare-styleable this way to set the color for each state -->
+    <declare-styleable name="DialView">
+        <attr name="dialColor1" format="color" />
+        <attr name="dialColor2" format="color" />
+        <attr name="dialColor3" format="color" />
+    </declare-styleable>
+</resources>

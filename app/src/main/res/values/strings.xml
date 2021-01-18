@@ -13,4 +13,9 @@
     <string name="notification_channel_name">Recipes</string>
     <string name="notification_channel_description">Searching for new recipes</string>
     <string name="notification_action_button_text">Save this recipes</string>
+
+    <string name="dial_off">Off</string>
+    <string name="dial_low">L</string>
+    <string name="dial_medium">M</string>
+    <string name="dial_high">H</string>
 </resources>

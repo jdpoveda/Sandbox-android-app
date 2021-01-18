@@ -48,6 +48,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Notifications - Configure a notification channel, show, dismiss and customize some notifications in the app.
 
+// ****CustomView - Create a custom view from scratch (extending View).
+
 // ****Retrofit - Implement retrofit to call endpoints and get the data
 
 // ****Glide - Implement and use Glide to load images

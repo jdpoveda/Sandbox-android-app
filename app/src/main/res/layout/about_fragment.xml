@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.AboutFragment">
 
     <TextView
+        android:id="@+id/aboutTextView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/about_text" />
+        android:layout_height="wrap_content"
+        android:text="@string/about_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</FrameLayout>
+    <!-- ****CustomView s12: Now you can use the custom view in the layouts -->
+    <!-- ****CustomView s14: Add the custom attributes that you added in the previous step (dialColor1, dialColor2, etc)-->
+    <com.juanpoveda.recipes.ui.views.DialView
+        android:id="@+id/customDialView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:dialColor1="#F1D90C"
+        app:dialColor2="#EC910B"
+        app:dialColor3="#CD0825"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
