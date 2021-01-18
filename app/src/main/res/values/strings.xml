@@ -6,4 +6,11 @@
     <string name="recipe_time_value">Time: %s min.</string>
     <string name="about_text">About: Developed by Juan Poveda. This is a sandbox app!</string>
     <string name="recipe_review_header_title">Saved Recipe Reviews:</string>
+    <string name="notification_title">My recipes app!</string>
+    <string name="recipe_notification_channel_id">recipes_channel_default</string>
+    <string name="notification_message">You\'re searching for new %s recipes.</string>
+    <string name="notification_action_clicked_message">Action button clicked. Saved!</string>
+    <string name="notification_channel_name">Recipes</string>
+    <string name="notification_channel_description">Searching for new recipes</string>
+    <string name="notification_action_button_text">Save this recipes</string>
 </resources>

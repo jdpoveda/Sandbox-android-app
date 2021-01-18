@@ -1,12 +1,20 @@
 package com.juanpoveda.recipes.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.*
+import android.app.NotificationManager
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.juanpoveda.recipes.BuildConfig
+import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.database.RecipeReview
 import com.juanpoveda.recipes.database.RecipesDatabaseDAO
 import com.juanpoveda.recipes.network.Hit
 import com.juanpoveda.recipes.network.RecipesApi
+import com.juanpoveda.recipes.util.cancelNotifications
+import com.juanpoveda.recipes.util.sendNotification
 import kotlinx.coroutines.launch
 
 // ****RecyclerViewErrorHandling s1: Add an Enum with the possible API states
@@ -16,7 +24,7 @@ enum class RecipesApiStatus { LOADING, ERROR, DONE }
 // can extend AndroidViewModel(application). The difference is that the AndroidViewModel includes the context.
 // ****Room s13: The viewModel must receive the DAO as an argument.
 class HomeViewModel(val database: RecipesDatabaseDAO,
-                    application: Application) : AndroidViewModel(application) {
+                    private val app: Application) : AndroidViewModel(app) {
 
     // ****ViewModel s3: Expose the data that will be consumed by the UI (Fragment or Activity) using LiveData. In this case
     // we want to expose the recipe list so the View (HomeFragment) can render the list. It's important to expose LiveData and keep a MutableLiveData
@@ -74,6 +82,25 @@ class HomeViewModel(val database: RecipesDatabaseDAO,
                 _hitList.value = emptyList()
             }
         }
+        // ****Notifications s6: Send a notification in the ViewModel when a user searches for new recipes. We need to pass the Application variable and
+        // the message to display in the Notification body. At this point if you run the app, the notification will not be shown, we need to configure the
+        // channel in the next steps to be able to display the notification.
+        val notificationManager = ContextCompat.getSystemService(
+            app,
+            NotificationManager::class.java
+        ) as NotificationManager
+        notificationManager.sendNotification(app.getString(R.string.notification_message).format(query), app, showLargeImage = true, showAction = true)
+    }
+
+    // ****Notifications s18: Now you can dismiss all the previously created notifications by calling notificationManager.cancelNotifications(). In this example,
+    // all the notifications will be dismissed when the user taps on any recipe from the list
+    fun clearPreviousNotifications() {
+        val notificationManager =
+            ContextCompat.getSystemService(
+                app,
+                NotificationManager::class.java
+            ) as NotificationManager
+        notificationManager.cancelNotifications()
     }
 
     // ----------------------------- Database Methods (start)---------------------------------------

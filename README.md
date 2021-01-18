@@ -44,6 +44,10 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****ViewBindingRecyclerView - Use view binding to replace findViewById for RecyclerView (Jetpack ViewBinding)
 
+// ****DownloadableFontsAndStyles - Add downloadable fonts and some styles to the app.
+
+// ****Notifications - Configure a notification channel, show, dismiss and customize some notifications in the app.
+
 // ****Retrofit - Implement retrofit to call endpoints and get the data
 
 // ****Glide - Implement and use Glide to load images

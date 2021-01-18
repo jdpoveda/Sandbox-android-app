@@ -3,6 +3,7 @@
     package="com.juanpoveda.recipes">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".RecipesApplication"
         android:allowBackup="true"
@@ -11,6 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Recipes">
+        <receiver
+            android:name=".receiver.RecipesBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,14 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <!-- ****DownloadableFontsAndStyles s1: Add this metadata to the manifest. (To add a downloadable font, click on any TextView in design view and click on the
+        <!--
+ ****DownloadableFontsAndStyles s1: Add this metadata to the manifest. (To add a downloadable font, click on any TextView in design view and click on the
          dropdown fontFamily under attributes section. Search the font, select the downloadable font radio button and after that, the font will be added in
          the res/font folder. These fonts will not be included in the apk, the app will download them if they're not already in the device). In this example,
-         the advent_pro was added as a downloadable font-->
-        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
+         the advent_pro was added as a downloadable font
+        -->
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

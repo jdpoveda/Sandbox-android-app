@@ -1,5 +1,9 @@
 package com.juanpoveda.recipes.ui
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -90,6 +94,13 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
             }
         }
 
+        // ****Notifications s13: Call the createChannel method each time that the main Fragment is created. At this point you should be able to see
+        // the notification that you sent in the previous steps.
+        createChannel(
+            getString(R.string.recipe_notification_channel_id),
+            getString(R.string.notification_channel_name)
+        )
+
     }
 
     override fun onDestroyView() {
@@ -99,6 +110,7 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
 
     override fun onHitClick(item: Hit) {
         Toast.makeText(activity, "Hit clicked!", Toast.LENGTH_SHORT).show()
+        viewModel.clearPreviousNotifications()
         // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action. If data must be passed between
         // fragments, check ****SafeArgs. The following line is commented because in this fragment we want to pass data to the next fragment.
         //findNavController().navigate(R.id.action_homeFragment_to_hitDetailFragment)
@@ -125,6 +137,36 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
 
     override fun onQueryTextChange(newText: String?): Boolean {
         return false
+    }
+
+    // ****Notifications s7: Add the createChannel function to the main fragment. It's safe to make this call to the start of the app. We'll need the channelId
+    // and the channelName
+    private fun createChannel(channelId: String, channelName: String) {
+        // ****Notifications s8: This is required and supported only for API 26 and above (Oreo+) so you need to surround all this code with a version checking if.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // ****Notifications s9: Create a NotificationChannel with the channelId, channelName and the importance of the notification.
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                // This is the Importance (or priority for Android 7.1 and lower) for the channel. The options are IMPORTANCE_HIGH, IMPORTANCE_DEFAULT,
+                // IMPORTANCE_LOW, IMPORTANCE_MIN. Depending on the option, the notification will have sound, vibration and other attributes.
+                NotificationManager.IMPORTANCE_HIGH
+            )
+
+            // ****Notifications s10: Configure some additional params:
+            notificationChannel.enableLights(true) // This setting will enable the lights when a notification is shown.
+            notificationChannel.lightColor = Color.RED // In order to display a red light when a notification is shown.
+            notificationChannel.enableVibration(true) // Enable vibration
+            notificationChannel.description = getString(R.string.notification_channel_description)
+
+            // ****Notifications s11: Get an instance of NotificationManager using getSystemService()
+            val notificationManager = requireActivity().getSystemService(
+                NotificationManager::class.java
+            )
+            // ****Notifications s12: Create the notification channel
+            notificationManager?.createNotificationChannel(notificationChannel)
+
+        }
     }
 
 }

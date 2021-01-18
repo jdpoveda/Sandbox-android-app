@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase
 // - version as 1. Whenever you change the schema, you'll have to increase the version number.
 // - exportSchema to false, so as not to keep schema version history backups.
 // NOTE: You only need one instance of the Room database for the whole app, so make the RoomDatabase a singleton.
-@Database(entities = [RecipeReview::class, DatabaseRecipe::class], version = 5, exportSchema = false)
+@Database(entities = [RecipeReview::class, DatabaseRecipe::class], version = 6, exportSchema = false)
 abstract class RecipesDatabase : RoomDatabase() {
     // ****Room s8: Add the DAO as an abstract field of the class. Multiple DAOs are allowed.
     abstract val recipesDatabaseDAO: RecipesDatabaseDAO

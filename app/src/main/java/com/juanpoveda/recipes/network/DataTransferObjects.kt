@@ -41,7 +41,7 @@ data class Recipe (
     @SerializedName("totalWeight") val totalWeight: Float,
     @SerializedName("uri") val uri: String,
     @SerializedName("url") val url: String,
-    @SerializedName("yield") val yield: Int
+    @SerializedName("yield") val yield: Float
 ): Serializable
 
 data class Digest (

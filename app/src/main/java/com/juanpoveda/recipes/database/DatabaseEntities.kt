@@ -56,7 +56,7 @@ data class DatabaseRecipe constructor (
     @ColumnInfo(name = "uri")
     var uri: String,
     @ColumnInfo(name = "yield")
-    var yield: Int
+    var yield: Float
 )
 
 /*
