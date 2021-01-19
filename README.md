@@ -71,14 +71,12 @@ Search for these comments in the app to check the steps needed to implement that
 - JetPack's Architecture components:
 
   * Paging
-  * WorkManager
 
 - JetPack's UI:
 
   * Animations & transitions
   * Auto, TV & Wear
   * Emoji
-  * Fragment (Check how to pass data between fragments, shared ViewModels, etc)
   * Layout
   * Palette
 
@@ -87,14 +85,11 @@ Search for these comments in the app to check the steps needed to implement that
   * DownloadManager
   * Media & Playback
   * Permissions
-  * Notifications
   * Sharing
   * Slices
 
 - Foundation:
 
-  * AppCompat
-  * Android KTX
   * Test (instrumented done)
 
 
