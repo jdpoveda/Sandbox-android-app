@@ -95,4 +95,7 @@ dependencies {
     // ****WorkManager s1: Add dependency
     implementation "android.arch.work:work-runtime-ktx:1.0.1"
 
+    // ****UnitTest s7 (Optional): Add hamcrest dependency to improve the quality of assertions.
+    testImplementation "org.hamcrest:hamcrest-all:1.3"
+
 }

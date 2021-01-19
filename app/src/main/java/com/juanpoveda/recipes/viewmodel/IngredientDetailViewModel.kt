@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.util.addArrowToIngredientsList
 
 class IngredientDetailViewModel : ViewModel() {
 
@@ -15,10 +16,7 @@ class IngredientDetailViewModel : ViewModel() {
     val transformedIngredientList = Transformations.map(ingredientList) {
         // ****Transformations s2: Here the LiveData variable is accessible, and it can be transformed depending on the needs. In this example,
         // the customText field is set for each ingredient to include a "->" before the description of each ingredient.
-        it.map{ingredient ->
-            var ing = ingredient
-            ing.customText = "-> " + ingredient.text
-            ing }
+        addArrowToIngredientsList(it)
     }
 
     init {

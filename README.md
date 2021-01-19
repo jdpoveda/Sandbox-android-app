@@ -60,6 +60,10 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****InstrumentedTest - Setup an instrumented test (requires Android device). (Testing)
 
+// ****UnitTest - Setup a Unit test. (Testing)
+
+// ****ViewModelTest - Write tests for ViewModels using AndroidX Test and Robolectric. (Testing)
+
 
 
 ----- Pending ------

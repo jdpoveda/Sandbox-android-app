@@ -49,7 +49,7 @@ class RecipesDatabaseTest {
         db.close()
     }
 
-    // ****InstrumentedTest s3: Define the Test with @Test, finish it with an assertion
+    // ****InstrumentedTest s4: Define the Test with @Test, finish it with an assertion
     // ****RoomTest s2: To call the db functions that we defined in the DAO use the following syntax
     @Test
     @Throws(Exception::class)
