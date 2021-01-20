@@ -88,8 +88,5 @@ Search for these comments in the app to check the steps needed to implement that
   * Sharing
   * Slices
 
-- Foundation:
-
-  * Test (instrumented done)
 
 

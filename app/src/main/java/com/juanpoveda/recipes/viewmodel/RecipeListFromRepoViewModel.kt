@@ -23,7 +23,7 @@ class RecipeListFromRepoViewModel(application: Application) : AndroidViewModel(a
     // ****Repository s9: Add a variable to get the list from the Repo, note that recipesRepository.recipes is LiveData so it will be updated automatically after
     // a DB update
     val recipes = recipesRepository.allRecipes
-    // ****Repository s10: Add a the variables to know if there is some networ error or so
+    // ****Repository s10: Add a the variables to know if there is some network error or so
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
@@ -52,6 +52,8 @@ class RecipeListFromRepoViewModel(application: Application) : AndroidViewModel(a
         }
     }
 
+    // ****ViewModelTest s1: We will start testing this simple method. The network and database calls add more complexity and will be reviewed later. First, create
+    // a test class for this viewModel. Right click in the class name -> generate -> test. Select JUnit 4 and for destination directory select test/
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
