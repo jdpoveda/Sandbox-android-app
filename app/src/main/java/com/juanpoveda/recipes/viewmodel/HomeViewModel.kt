@@ -9,10 +9,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.juanpoveda.recipes.BuildConfig
 import com.juanpoveda.recipes.R
-import com.juanpoveda.recipes.database.RecipeReview
-import com.juanpoveda.recipes.database.RecipesDatabaseDAO
-import com.juanpoveda.recipes.network.Hit
-import com.juanpoveda.recipes.network.RecipesApi
+import com.juanpoveda.recipes.data.database.RecipeReview
+import com.juanpoveda.recipes.data.database.RecipesDatabaseDAO
+import com.juanpoveda.recipes.data.network.HitDTO
+import com.juanpoveda.recipes.data.network.RecipesApi
 import com.juanpoveda.recipes.util.cancelNotifications
 import com.juanpoveda.recipes.util.sendNotification
 import kotlinx.coroutines.launch
@@ -29,8 +29,8 @@ class HomeViewModel(val database: RecipesDatabaseDAO,
     // ****ViewModel s3: Expose the data that will be consumed by the UI (Fragment or Activity) using LiveData. In this case
     // we want to expose the recipe list so the View (HomeFragment) can render the list. It's important to expose LiveData and keep a MutableLiveData
     // private, because the only one that must make changes to this variable is the ViewModel
-    private val _hitList = MutableLiveData<List<Hit>?>()
-    val hitList: LiveData<List<Hit>?>
+    private val _hitList = MutableLiveData<List<HitDTO>?>()
+    val hitList: LiveData<List<HitDTO>?>
         get() = _hitList
     private val _lastReviewedRecipe = MutableLiveData<RecipeReview>()
     val lastReviewedRecipe: LiveData<RecipeReview>
@@ -121,7 +121,7 @@ class HomeViewModel(val database: RecipesDatabaseDAO,
         }
     }
 
-    fun addReview(hit: Hit) {
+    fun addReview(hit: HitDTO) {
         viewModelScope.launch {
             val newReview = RecipeReview()
             newReview.recipeName = hit.recipe.label

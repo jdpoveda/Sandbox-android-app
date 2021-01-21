@@ -6,10 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.juanpoveda.recipes.databinding.IngredientListItemBinding
 import com.juanpoveda.recipes.databinding.RecipeFromRepoListItemBinding
-import com.juanpoveda.recipes.domain.RecipeDomain
-import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.data.domain.RecipeDomain
 
 class RecipeFromRepoListAdapter(listener: OnRecipeFromRepoClickListener) : ListAdapter<RecipeDomain, RecipeFromRepoListAdapter.RecipeFromRepoViewHolder>(RecipeFromRepoListDiffCallback()) {
     private val recipeFromRepoClickListener: OnRecipeFromRepoClickListener = listener

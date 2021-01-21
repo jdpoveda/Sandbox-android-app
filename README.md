@@ -17,6 +17,8 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****Repository - Create a Repository to manage all the data source in 1 place. Requires: ****Room, ****Retrofit
 
+// ****ImproveRepositoryWithDataSources - Add local and remote DataSource classes and use them in the Repository. ****Repository, ****Room, ****Retrofit
+
 // ****WorkManager - WorkManager to schedule a background task in an optimized and efficient way. WorkManager is for background work that's deferrable and requires guaranteed execution:
   - Deferrable means that the work is not required to run immediately. For example, sending analytical data to the server or syncing the database in the background is work that can be deferred.
   - Guaranteed execution means that the task will run even if the app exits or the device restarts.(Jetpack WorkManager)

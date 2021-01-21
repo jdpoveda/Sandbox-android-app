@@ -1,4 +1,4 @@
-package com.juanpoveda.recipes.network
+package com.juanpoveda.recipes.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

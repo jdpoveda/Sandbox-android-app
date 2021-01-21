@@ -1,4 +1,4 @@
-package com.juanpoveda.recipes.network
+package com.juanpoveda.recipes.data.network
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -11,9 +11,13 @@ interface Webservice {
     @GET("search")
     suspend fun getRecipesByQuery(@Query("app_id") appId: String,
                           @Query("app_key") appKey: String,
-                          @Query("q") q: String): SearchResponse
+                          @Query("q") q: String): SearchResponseDTO
     @GET("search")
     fun getRecipesByQueryWithoutCoroutines(@Query("app_id") appId: String,
                                            @Query("app_key") appKey: String,
-                                           @Query("q") q: String): Call<SearchResponse>
+                                           @Query("q") q: String): Call<SearchResponseDTO>
+    @GET("search")
+    suspend fun getRecipeByUrl(@Query("app_id") appId: String,
+                                  @Query("app_key") appKey: String,
+                                  @Query("r") r: String): List<RecipeDTO>
 }

@@ -1,6 +1,6 @@
 package com.juanpoveda.recipes.util
 
-import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.data.network.IngredientDTO
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.startsWith
 import org.junit.Assert.*
@@ -14,7 +14,7 @@ class RecipeUtilsTest {
     fun addArrowToIngredientsList_listOfTwoIngredients_returnsIngredientListWithArrows() {
         // ****UnitTest s4: Initialize the test objects. In this example, a list of ingredients is needed to perform the test
         val ingredients = listOf(
-            Ingredient(
+            IngredientDTO(
                 customText = "",
                 food = "Pork",
                 foodCategory = "Meat",
@@ -24,7 +24,7 @@ class RecipeUtilsTest {
                 weight = 5F,
                 image = ""
             ),
-            Ingredient(
+            IngredientDTO(
                 customText = "",
                 food = "Chicken",
                 foodCategory = "Meat",
@@ -50,7 +50,7 @@ class RecipeUtilsTest {
     // ****UnitTest s9: Add more test scenarios for this class
     @Test
     fun addArrowToIngredientsList_emptyList_returnsEmptyList() {
-        val ingredients = listOf<Ingredient>()
+        val ingredients = listOf<IngredientDTO>()
         val result = addArrowToIngredientsList(ingredients)
 
         assertThat(result.size, `is`(0))

@@ -11,13 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanpoveda.recipes.R
-import com.juanpoveda.recipes.adapter.HitListAdapter
+import com.juanpoveda.recipes.RecipesApplication
 import com.juanpoveda.recipes.adapter.RecipeFromRepoListAdapter
 import com.juanpoveda.recipes.databinding.RecipeListFromRepoFragmentBinding
-import com.juanpoveda.recipes.domain.RecipeDomain
+import com.juanpoveda.recipes.data.domain.RecipeDomain
 import com.juanpoveda.recipes.viewmodel.RecipeListFromRepoViewModel
-import com.juanpoveda.recipes.viewmodel.RecipesApiStatus
 import com.juanpoveda.recipes.viewmodel.factory.RecipeListFromRepoViewModelFactory
 
 class RecipeListFromRepoFragment : Fragment(), RecipeFromRepoListAdapter.OnRecipeFromRepoClickListener, SearchView.OnQueryTextListener {
@@ -41,7 +39,8 @@ class RecipeListFromRepoFragment : Fragment(), RecipeFromRepoListAdapter.OnRecip
         binding.recipeSearchView.setOnQueryTextListener(this)
 
         val application = requireNotNull(this.activity).application
-        val viewModelFactory = RecipeListFromRepoViewModelFactory(application)
+        // ****ImproveRepositoryWithDataSources s14: Pass the recipesRepository from the Application class when creating the ViewModel
+        val viewModelFactory = RecipeListFromRepoViewModelFactory(application, (application as RecipesApplication).recipesRepository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(RecipeListFromRepoViewModel::class.java)
 
         val recipeFromRepoListAdapter = RecipeFromRepoListAdapter(this)
@@ -50,7 +49,14 @@ class RecipeListFromRepoFragment : Fragment(), RecipeFromRepoListAdapter.OnRecip
 
         // ****Repository s12: Now, we only need to observe the list in the fragment and it'll updated automatically. If there's no network connection, the
         // list will contain the last known data that is stored in the DB
-        viewModel.recipes.observe(viewLifecycleOwner) {
+        //viewModel.recipes.observe(viewLifecycleOwner) {
+        //    it?.let { it1 ->
+        //        recipeFromRepoListAdapter.submitList(it1)
+        //    }
+        //}
+
+        // ****ImproveRepositoryWithDataSources s17: We're going to observe now the recipeList using the new Repo:
+        viewModel.recipeListNewRepo.observe(viewLifecycleOwner) {
             it?.let { it1 ->
                 recipeFromRepoListAdapter.submitList(it1)
             }
@@ -69,7 +75,9 @@ class RecipeListFromRepoFragment : Fragment(), RecipeFromRepoListAdapter.OnRecip
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        viewModel.searchRecipesFromRepo(query.orEmpty())
+        //viewModel.searchRecipesFromRepo(query.orEmpty())
+        // ****ImproveRepositoryWithDataSources s18: We're going to search the recipes using the new Repo.
+        viewModel.searchRecipesFromNewRepo(query.orEmpty())
         binding.root.requestFocus() // To avoid keeping the focus in the SearchView after submit
         return false
     }

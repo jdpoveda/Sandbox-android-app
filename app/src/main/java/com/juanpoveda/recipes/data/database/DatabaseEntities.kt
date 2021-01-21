@@ -1,11 +1,7 @@
-package com.juanpoveda.recipes.database
+package com.juanpoveda.recipes.data.database
 
 import androidx.room.*
-import com.juanpoveda.recipes.domain.IngredientDomain
-import com.juanpoveda.recipes.domain.RecipeDomain
-import com.juanpoveda.recipes.network.Digest
-import com.juanpoveda.recipes.network.Ingredient
-import com.juanpoveda.recipes.network.Recipe
+import com.juanpoveda.recipes.data.domain.RecipeDomain
 
 // ****Room s2: Add Entities and mark the Entity, PrimaryKey and Columns with the following annotations
 @Entity(tableName = "recipe_review_table")
@@ -30,7 +26,10 @@ data class RecipeReview (
 @Entity(tableName = "recipe_table")
 data class DatabaseRecipe constructor (
     @PrimaryKey
+    var uri: String,
+    @ColumnInfo(name = "url")
     var url: String,
+    @ColumnInfo(name = "calories")
     var calories: Float,
     //var cautions: List<String>,
     //var cuisineType: List<String>,
@@ -53,8 +52,6 @@ data class DatabaseRecipe constructor (
     var totalTime: Int,
     @ColumnInfo(name = "total_weight")
     var totalWeight: Float,
-    @ColumnInfo(name = "uri")
-    var uri: String,
     @ColumnInfo(name = "yield")
     var yield: Float
 )
@@ -86,7 +83,24 @@ fun List<DatabaseRecipe>.asDomainModel(): List<RecipeDomain> {
             totalTime = it.totalTime,
             source = it.source,
             totalWeight = it.totalWeight,
-            url = it.url
+            url = it.url,
+            uri = it.uri
         )
     }
+}
+
+fun DatabaseRecipe.asDomainModel(): RecipeDomain {
+
+    return RecipeDomain(
+        calories = calories,
+        image = image,
+        label = label,
+        shareAs = shareAs,
+        totalTime = totalTime,
+        source = source,
+        totalWeight = totalWeight,
+        url = url,
+        uri = uri
+    )
+
 }

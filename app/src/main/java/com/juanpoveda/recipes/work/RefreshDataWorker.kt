@@ -3,8 +3,8 @@ package com.juanpoveda.recipes.work
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.juanpoveda.recipes.database.RecipesDatabase
-import com.juanpoveda.recipes.repository.RecipesRepository
+import com.juanpoveda.recipes.data.database.RecipesDatabase
+import com.juanpoveda.recipes.data.repository.DefaultRecipesRepositoryWithoutDataSources
 import retrofit2.HttpException
 import timber.log.Timber
 
@@ -29,7 +29,7 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters) :
         // ****WorkManager s4: We can use the database and repository in our Worker. Here, we'll make a network call to get some Recipes in the background
         // and insert them into the DB.
         val database = RecipesDatabase.getInstance(applicationContext)
-        val repository = RecipesRepository(database)
+        val repository = DefaultRecipesRepositoryWithoutDataSources(database)
 
         try {
             val randomQuery = listOf<String>("rum", "tequila", "vodka", "gin", "triple sec", "beer", "whiskey", "wine", "aperol").random()

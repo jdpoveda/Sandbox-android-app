@@ -3,9 +3,9 @@ package com.juanpoveda.recipes
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.juanpoveda.recipes.database.RecipeReview
-import com.juanpoveda.recipes.database.RecipesDatabase
-import com.juanpoveda.recipes.database.RecipesDatabaseDAO
+import com.juanpoveda.recipes.data.database.RecipeReview
+import com.juanpoveda.recipes.data.database.RecipesDatabase
+import com.juanpoveda.recipes.data.database.RecipesDatabaseDAO
 import org.junit.After
 
 import org.junit.Test

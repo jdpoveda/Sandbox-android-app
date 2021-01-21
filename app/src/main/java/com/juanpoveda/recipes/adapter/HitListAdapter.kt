@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.databinding.HitListItemBinding
-import com.juanpoveda.recipes.network.Hit
+import com.juanpoveda.recipes.data.network.HitDTO
 
 // ****RecyclerView s3: Create the Adapter class for the RecyclerView with the list of items in the constructor. We'll need ViewBinding here also.
-class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener) : RecyclerView.Adapter<HitListAdapter.HitsViewHolder>() {
+class HitListAdapter(private val items: List<HitDTO>, listener: OnHitClickListener) : RecyclerView.Adapter<HitListAdapter.HitsViewHolder>() {
 
     // ****RecyclerView s3-3: Add a class field for the listener (the original listener must be passed in the constructor of the Adapter)
     private val hitClickListener: OnHitClickListener = listener
-    private val hitList: List<Hit> = items
+    private val hitList: List<HitDTO> = items
 
     // ****RecyclerView s3-4: Create the ViewHolder class. It should receive the Binding of the item view. In this case the item layout is
     // hit_list_item.xml so the binder is HitListItemBinding.
@@ -55,7 +55,7 @@ class HitListAdapter(private val items: List<Hit>, listener: OnHitClickListener)
 
     // ****RecyclerView s3-2: Add an Interface to listen for the item click events (if needed)
     interface OnHitClickListener {
-        fun onHitClick(item: Hit)
-        fun onAddReviewClick(item: Hit)
+        fun onHitClick(item: HitDTO)
+        fun onAddReviewClick(item: HitDTO)
     }
 }

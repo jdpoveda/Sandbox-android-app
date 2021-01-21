@@ -1,5 +1,6 @@
-package com.juanpoveda.recipes.domain
+package com.juanpoveda.recipes.data.domain
 
+import com.juanpoveda.recipes.data.database.DatabaseRecipe
 import java.io.Serializable
 
 data class RecipeDomain (
@@ -13,7 +14,8 @@ data class RecipeDomain (
     val source: String,
     val totalTime: Int,
     val totalWeight: Float,
-    val url: String
+    val url: String,
+    val uri: String
 ): Serializable
 
 data class IngredientDomain (
@@ -26,3 +28,18 @@ data class IngredientDomain (
     val weight: Float,
     var customText: String
 ): Serializable
+
+fun RecipeDomain.asDatabaseModel(): DatabaseRecipe {
+    return DatabaseRecipe(
+        calories = calories,
+        image = image,
+        label = label,
+        shareAs = shareAs,
+        source = source,
+        totalTime = totalTime,
+        totalWeight = totalWeight,
+        url = url,
+        uri = uri,
+        `yield` = 0F
+    )
+}

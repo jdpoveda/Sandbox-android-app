@@ -11,7 +11,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.adapter.IngredientListAdapter
 import com.juanpoveda.recipes.databinding.IngredientDetailFragmentBinding
-import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.data.network.IngredientDTO
 import com.juanpoveda.recipes.viewmodel.IngredientDetailViewModel
 
 class IngredientDetailFragment : Fragment(), IngredientListAdapter.OnIngredientClickListener {
@@ -52,7 +52,7 @@ class IngredientDetailFragment : Fragment(), IngredientListAdapter.OnIngredientC
 
     }
 
-    override fun onIngredientClick(item: Ingredient) {
+    override fun onIngredientClick(item: IngredientDTO) {
         Toast.makeText(activity, "Ingredient click", Toast.LENGTH_SHORT).show()
     }
 

@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.juanpoveda.recipes.databinding.IngredientListItemBinding
-import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.data.network.IngredientDTO
 
 // ****RecyclerViewDiffUtil s4: Change the signature of the adapter class to extend ListAdapter instead RecyclerView.Adapter.
 // We need to pass the DiffCallback as a param. ListAdapter keeps track of the list for you and notifies the adapter when the list is updated.
-class IngredientListAdapter(listener: OnIngredientClickListener) : ListAdapter<Ingredient, IngredientListAdapter.IngredientsViewHolder>(IngredientListDiffCallback()) {
+class IngredientListAdapter(listener: OnIngredientClickListener) : ListAdapter<IngredientDTO, IngredientListAdapter.IngredientsViewHolder>(IngredientListDiffCallback()) {
     private val ingredientClickListener: OnIngredientClickListener = listener
     // ****RecyclerViewDiffUtil s5: Remove the variable that stores the list. It was: private val ingredientList: List<Ingredient> = items
 
@@ -41,20 +41,20 @@ class IngredientListAdapter(listener: OnIngredientClickListener) : ListAdapter<I
     // ****RecyclerViewDiffUtil s7: Remove getItemCount() method. It's not required by ListAdapter. It was: getItemCount() = ingredientList.size
 
     interface OnIngredientClickListener {
-        fun onIngredientClick(item: Ingredient)
+        fun onIngredientClick(item: IngredientDTO)
     }
 }
 
 // ****RecyclerViewDiffUtil s1: Create a DiffCallback class in the same file that the Adapter, in this case the adapter is for items
 // of type Ingredient so we extend DiffUtil.ItemCallback<Ingredient>(). Implement the methods that are required
-class IngredientListDiffCallback : DiffUtil.ItemCallback<Ingredient>() {
+class IngredientListDiffCallback : DiffUtil.ItemCallback<IngredientDTO>() {
     // ****RecyclerViewDiffUtil s2: Write the code to test if 2 items are the same item. If the items have the same text, they are the same item,
     // so return true. Otherwise, return false
-    override fun areItemsTheSame(oldItem: Ingredient, newItem: Ingredient): Boolean {
+    override fun areItemsTheSame(oldItem: IngredientDTO, newItem: IngredientDTO): Boolean {
         return oldItem.text.equals(newItem.text, true)
     }
     // ****RecyclerViewDiffUtil s3: Write the code to check if the content of 2 items is the same. As we are using dataClass, then we can compare with ==.
-    override fun areContentsTheSame(oldItem: Ingredient, newItem: Ingredient): Boolean {
+    override fun areContentsTheSame(oldItem: IngredientDTO, newItem: IngredientDTO): Boolean {
         return oldItem == newItem
     }
 }

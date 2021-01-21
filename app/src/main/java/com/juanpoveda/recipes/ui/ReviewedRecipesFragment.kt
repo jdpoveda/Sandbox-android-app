@@ -9,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanpoveda.recipes.adapter.IngredientListAdapter
 import com.juanpoveda.recipes.adapter.RecipeReviewListAdapter
-import com.juanpoveda.recipes.database.RecipeReview
-import com.juanpoveda.recipes.database.RecipesDatabase
+import com.juanpoveda.recipes.data.database.RecipeReview
+import com.juanpoveda.recipes.data.database.RecipesDatabase
 import com.juanpoveda.recipes.databinding.ReviewedRecipesFragmentBinding
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
 import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory

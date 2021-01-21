@@ -3,6 +3,7 @@ package com.juanpoveda.recipes
 import android.app.Application
 import android.os.Build
 import androidx.work.*
+import com.juanpoveda.recipes.data.repository.RecipesRepository
 import com.juanpoveda.recipes.work.RefreshDataWorker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +12,10 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class RecipesApplication: Application() {
+
+    // ****ImproveRepositoryWithDataSources s11: Add the repository as an attribute in Application class, and initialize it by calling the ServiceLocator
+    val recipesRepository: RecipesRepository
+        get() = ServiceLocator.provideRecipesRepository(this)
 
     // ****WorkManager s9: Add the applicationScope using Coroutines for the Application class
     private val applicationScope = CoroutineScope(Dispatchers.Default)

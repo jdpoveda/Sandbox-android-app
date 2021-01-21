@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.juanpoveda.recipes.network.Ingredient
+import com.juanpoveda.recipes.data.network.IngredientDTO
 import com.juanpoveda.recipes.util.addArrowToIngredientsList
 
 class IngredientDetailViewModel : ViewModel() {
 
-    private val _ingredientList = MutableLiveData<List<Ingredient>>()
-    val ingredientList: LiveData<List<Ingredient>>
+    private val _ingredientList = MutableLiveData<List<IngredientDTO>>()
+    val ingredientList: LiveData<List<IngredientDTO>>
         get() = _ingredientList
     // ****Transformations s1: Add the variable to expose in the viewModel. An already-defined LiveData variable must be passed to Transformation.map()
     val transformedIngredientList = Transformations.map(ingredientList) {
@@ -23,7 +23,7 @@ class IngredientDetailViewModel : ViewModel() {
         setIngredientList(emptyList())
     }
 
-    fun setIngredientList(ingredients: List<Ingredient>) {
+    fun setIngredientList(ingredients: List<IngredientDTO>) {
         _ingredientList.value = ingredients
     }
 }

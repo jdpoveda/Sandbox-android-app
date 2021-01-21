@@ -17,9 +17,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.juanpoveda.recipes.R
 import com.juanpoveda.recipes.adapter.HitListAdapter
-import com.juanpoveda.recipes.database.RecipesDatabase
+import com.juanpoveda.recipes.data.database.RecipesDatabase
 import com.juanpoveda.recipes.databinding.RecipeListFragmentBinding
-import com.juanpoveda.recipes.network.Hit
+import com.juanpoveda.recipes.data.network.HitDTO
 import com.juanpoveda.recipes.viewmodel.HomeViewModel
 import com.juanpoveda.recipes.viewmodel.RecipesApiStatus
 import com.juanpoveda.recipes.viewmodel.factory.HomeViewModelFactory
@@ -108,7 +108,7 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
         _binding = null
     }
 
-    override fun onHitClick(item: Hit) {
+    override fun onHitClick(item: HitDTO) {
         Toast.makeText(activity, "Hit clicked!", Toast.LENGTH_SHORT).show()
         viewModel.clearPreviousNotifications()
         // ****Navigation s7: To navigate between fragments, use this syntax and the previously created action. If data must be passed between
@@ -122,7 +122,7 @@ class RecipeListFragment : Fragment(), HitListAdapter.OnHitClickListener, Search
         findNavController().navigate(RecipeListFragmentDirections.actionRecipeListFragmentToHitDetailFragment(item))
     }
 
-    override fun onAddReviewClick(item: Hit) {
+    override fun onAddReviewClick(item: HitDTO) {
         Toast.makeText(activity, "Add review clicked!", Toast.LENGTH_SHORT).show()
         viewModel.addReview(item)
     }

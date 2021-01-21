@@ -43,7 +43,7 @@
                 we need to pass a Hit object. REBUILD THE PROJECT AFTER ADDING THE ARGUMENTS! -->
        <argument
            android:name="selectedHit"
-           app:argType="com.juanpoveda.recipes.network.Hit" />
+           app:argType="com.juanpoveda.recipes.data.network.HitDTO" />
    </fragment>
     <fragment
         android:id="@+id/ingredientDetailFragment"
@@ -52,7 +52,7 @@
         tools:layout="@layout/ingredient_detail_fragment" >
         <argument
             android:name="recipe"
-            app:argType="com.juanpoveda.recipes.network.Recipe" />
+            app:argType="com.juanpoveda.recipes.data.network.RecipeDTO" />
     </fragment>
     <fragment
         android:id="@+id/stepsFragment"
@@ -61,7 +61,7 @@
         tools:layout="@layout/steps_fragment" >
         <argument
             android:name="recipe"
-            app:argType="com.juanpoveda.recipes.network.Recipe" />
+            app:argType="com.juanpoveda.recipes.data.network.RecipeDTO" />
     </fragment>
     <!-- ****NavigationDrawer s2: All the fragments that will be included in the drawer must be in the nav_graph.xml file
             and have an id like @+id/aboutFragment in this case! (even if they are not connected to any other fragments)-->
