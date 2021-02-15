@@ -1,6 +1,7 @@
 package com.juanpoveda.recipes.data.domain
 
 import com.juanpoveda.recipes.data.database.DatabaseRecipe
+import com.juanpoveda.recipes.data.network.RecipeDTO
 import java.io.Serializable
 
 data class RecipeDomain (
@@ -41,5 +42,29 @@ fun RecipeDomain.asDatabaseModel(): DatabaseRecipe {
         url = url,
         uri = uri,
         `yield` = 0F
+    )
+}
+
+fun RecipeDomain.asDTO(): RecipeDTO {
+    return RecipeDTO(
+        calories = calories,
+        image = image,
+        label = label,
+        shareAs = shareAs,
+        source = source,
+        totalTime = totalTime,
+        totalWeight = totalWeight,
+        url = url,
+        uri = uri,
+        `yield` = 0F,
+        cautions = listOf(),
+        cuisineType = listOf(),
+        dietLabels = listOf(),
+        digest = listOf(),
+        dishType = listOf(),
+        healthLabels = listOf(),
+        ingredientLines = listOf(),
+        mealType = listOf(),
+        ingredients = listOf() // TODO: Change for the real ingredients list.
     )
 }

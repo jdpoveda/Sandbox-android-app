@@ -8,6 +8,8 @@ interface RecipesRepository {
 
     suspend fun refreshRecipes(query: String)
 
+    suspend fun getRecipes(forceUpdate: Boolean, query: String): Result<List<RecipeDomain>>
+
     fun observeRecipes(): LiveData<Result<List<RecipeDomain>>>
 
 }

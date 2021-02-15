@@ -4,7 +4,13 @@ import android.os.Build
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.juanpoveda.recipes.TestingObjects
+import com.juanpoveda.recipes.data.domain.RecipeDomain
+import com.juanpoveda.recipes.data.repository.DefaultRecipesRepository
+import com.juanpoveda.recipes.data.source.FakeDataSource
+import com.juanpoveda.recipes.data.source.FakeTestRepository
 import com.juanpoveda.recipes.getOrAwaitValue
+import kotlinx.coroutines.Dispatchers
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.Before
@@ -29,11 +35,20 @@ class RecipeListFromRepoViewModelTest {
     // use this rule!
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
+    // ****TestRepositoryWithDoublesAndDependencyInjection s11: create a FakeTestRepository var to pass it to the viewModel
+    private lateinit var fakeRepository: FakeTestRepository
 
     @Before
     fun initViewModel() {
+        // ****TestRepositoryWithDoublesAndDependencyInjection s12: initialize the fakeRepository, add some items to it and then initialize the ViewModel.
+        fakeRepository = FakeTestRepository()
+        val r1 = TestingObjects.RECIPE_1
+        val r2 = TestingObjects.RECIPE_2
+        val r3 = TestingObjects.RECIPE_3
+        fakeRepository.addRecipes(r1, r2, r3)
+
         // ****ViewModelTest s6-2: Initialize the viewModel now with androidx.test
-        recipeListFromRepoViewModel = RecipeListFromRepoViewModel(ApplicationProvider.getApplicationContext())
+        recipeListFromRepoViewModel = RecipeListFromRepoViewModel(ApplicationProvider.getApplicationContext(), fakeRepository)
     }
 
     // ****ViewModelTest s3: Add the test. As you can see, we need the context here so add the dependencies on the nest step.

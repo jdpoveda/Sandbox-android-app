@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recetas</string>
+    <string name="share_title">Compartiendo receta: %s</string>
+    <string name="share">Compartir</string>
+    <string name="recipe_calories_value">Calorias: %s kCal.</string>
+    <string name="recipe_time_value">Tiempo: %s min.</string>
+    <string name="about_text">Acerca de esta app: Desarrollada por Juan Poveda. Esta es una app tipo Sandbox!</string>
+    <string name="recipe_review_header_title">Reviews de recetas guardados:</string>
+    <string name="notification_title">Mi app de recetas!</string>
+    <string name="notification_message">Estás buscando recetas de: %s.</string>
+    <string name="notification_action_clicked_message">Pulsaste el botón de acción. Guardado!</string>
+    <string name="notification_action_button_text">Guardar estas recetas.</string>
+</resources>

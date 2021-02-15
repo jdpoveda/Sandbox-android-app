@@ -66,6 +66,10 @@ Search for these comments in the app to check the steps needed to implement that
 
 // ****ViewModelTest - Write tests for ViewModels using AndroidX Test and Robolectric. (Testing)
 
+// ****TestRepositoryWithDoublesAndDependencyInjection - Write tests for repository using doubles and dependency injection. (Testing)
+
+// ****IntegrationTestEspresso - Write an integration test to test the fragment and view-model interactions. Find out if the view model code appropriately updates the UI (Testing)
+
 
 
 ----- Pending ------

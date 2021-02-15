@@ -115,4 +115,13 @@ dependencies {
     // ****ViewModelTest s9: Add this dependency to architecture components test lib. We'll need some rules from this lib to test LiveData.
     testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
 
+    // ****TestRepositoryWithDoublesAndDependencyInjection s6: Add the dependency to be able to use coroutines in the tests
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+
+    // ****IntegrationTestEspresso s1: Add the following dependencies
+    androidTestImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    debugImplementation "androidx.fragment:fragment-testing:$fragmentVersion"
+    implementation "androidx.test:core:$androidXTestCoreVersion"
+
 }

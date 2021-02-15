@@ -52,6 +52,10 @@ class DefaultRecipesRepositoryWithoutDataSources(private val database: RecipesDa
 
     }
 
+    override suspend fun getRecipes(forceUpdate: Boolean, query: String): Result<List<RecipeDomain>> {
+        TODO("Not yet implemented")
+    }
+
     override fun observeRecipes(): LiveData<Result<List<RecipeDomain>>> {
         TODO("Not yet implemented")
     }
